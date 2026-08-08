@@ -6,7 +6,11 @@ sidebar_position: 7
 slug: /sub-ghz
 ---
 
-<div className="guideMeta">Field Guide 07 · 7 min read · v0.8.x baseline</div>
+<div className="guideMeta">Field Guide 07 · 7 min read</div>
+
+:::warning
+For legal and authorized use only. Only test devices you own or have explicit permission to access.
+:::
 
 ## Sub-GHz menu {#subghz-menu}
 
@@ -19,7 +23,6 @@ A microSD card is required for **Record** and **Replay**. Capture or transmit on
 | Record | Captures a signal and saves it to the microSD card. |
 | Replay | Transmits a previously saved `.sgh` recording. |
 | Frequency Reader | Sweeps for an active signal and displays frequency and RSSI. |
-| Regional Information | Shows the frequency ranges configured for the device region. |
 
 ## Record a signal {#record-signal}
 
@@ -51,13 +54,14 @@ Raw replay normally will not operate systems using rolling codes, challenge-resp
 
 Documented presets: `300.000`, `310.000`, `315.000`, `345.000`, `372.000`, `390.000`, `433.000`, `433.920`, and `915.000 MHz`.
 
-## Regional information {#regional-information}
+## Antenna hardware {#subghz-antenna}
 
-The screen reports the region stored in firmware and its configured frequency ranges. The North America guide baseline lists `310.000–321.950 MHz`, `433.050–434.790 MHz`, and `915.000–928.000 MHz`.
-
-:::danger[Radio law]
-The regional screen is a configuration reference, not legal advice. Legal limits can depend on frequency, power, antenna, duty cycle, modulation, and the type of transmission.
-:::
+| Item | Specification |
+| --- | --- |
+| Type | Helical multiband monopole |
+| Gain | −7 dBi |
+| Dimensions | 38.1 × 8.9 mm |
+| Covered bands | 315 / 433 / 868 / 915 MHz |
 
 ## Troubleshooting {#subghz-troubleshooting}
 
@@ -71,4 +75,4 @@ The regional screen is a configuration reference, not legal advice. Legal limits
 
 ---
 
-Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.
+Need help? Email [support@monstatek.com](mailto:support@monstatek.com) and include the firmware version and screen name.

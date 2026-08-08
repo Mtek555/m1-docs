@@ -1,19 +1,19 @@
 ---
 id: usb
 title: USB
-description: Use charging, CDC serial, and microSD mass storage correctly.
+description: Use charging, CDC serial, the USB-UART bridge, and microSD mass storage correctly.
 sidebar_position: 14
 slug: /usb
 ---
 
-<div className="guideMeta">Field Guide 14 · 5 min read · v0.8.x baseline</div>
+<div className="guideMeta">Field Guide 14 · 6 min read</div>
 
 ## USB functions {#usb-functions}
 
 | Function | What it does |
 | --- | --- |
 | Charging | Powers the device and charges the internal battery from a standard 5 V source. |
-| CDC virtual serial | Presents a serial interface for supported logs, commands, and development workflows. |
+| CDC virtual serial | Presents a serial interface for supported logs, commands, and serial communication. |
 | MSC mass storage | Makes the microSD card available to a computer as a removable drive. |
 
 ## Use microSD mass storage {#usb-storage}
@@ -28,12 +28,17 @@ slug: /usb
 Do not remove the microSD card, disconnect USB, or remount the card while the computer is writing files.
 :::
 
-## CDC serial is not the GPIO bridge {#cdc-and-bridge}
+## CDC serial and the GPIO bridge {#cdc-and-bridge}
 
-When supported by the active firmware and operating system, the M1 appears as a CDC virtual serial port. This built-in interface is separate from the GPIO menu's planned USB-UART bridge.
+The M1 appears as a USB CDC virtual serial port. The functional **GPIO > USB-UART bridge** uses that USB serial connection to forward data bidirectionally to the selected UART target.
 
-:::note[Current bridge status]
-The **USB-UART bridge** entry intended for `PA9 / PA10` is not functional in the documented firmware.
+| Bridge target | Connection |
+| --- | --- |
+| UART: TX (PA9), RX (PA10), 3.3 V | External UART1 header connection |
+| UART: ESP32 | Internal ESP32 UART connection |
+
+:::note[Serial settings]
+The default bridge setting is **115200 baud, 8 data bits, no parity, 1 stop bit**. Supported line-coding changes selected by the computer are applied to the active UART.
 :::
 
 ## Troubleshooting {#usb-troubleshooting}
@@ -48,4 +53,4 @@ The **USB-UART bridge** entry intended for `PA9 / PA10` is not functional in the
 
 ---
 
-Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.
+Need help? Email [support@monstatek.com](mailto:support@monstatek.com) and include the firmware version and screen name.

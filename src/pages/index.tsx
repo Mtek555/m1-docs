@@ -20,16 +20,12 @@ export default function Home(): ReactNode {
             <div className={styles.heroCopy}>
               <p className={styles.eyebrow}>OFFICIAL USER DOCUMENTATION</p>
               <Heading as="h1">Master your <span>MonstaTek M1</span></Heading>
-              <p>Clear, accurate field guides for setup, radio tools, storage, hardware expansion, and device maintenance.</p>
+              <p>Field guides for setup, radio tools, storage, hardware expansion, and device maintenance.</p>
               <div className={styles.actions}>
                 <Link className="button button--primary" to="/docs/getting-started">Start with the M1 →</Link>
                 <Link className="button button--secondary" href="https://update.monstatek.com">Update firmware ↗</Link>
               </div>
-              <small>● Verified for the v0.8.x firmware family</small>
-            </div>
-            <div className={styles.brandPanel}>
-              <img src="/img/favicon.svg" alt="MonstaTek" />
-              <p>Capable technology,<br />clearly presented.</p>
+              <small>● Official MonstaTek M1 field guide</small>
             </div>
           </div>
         </section>

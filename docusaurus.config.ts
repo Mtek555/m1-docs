@@ -62,7 +62,10 @@ const config: Config = {
           { label: "GitHub", href: "https://github.com/Monstatek/M1" },
           { label: "Firmware releases", href: "https://github.com/Monstatek/M1/releases" },
         ] },
-        { title: "Support", items: [{ label: "support@monstatek.com", href: "mailto:support@monstatek.com" }] },
+        { title: "Support", items: [
+          { label: "support@monstatek.com", href: "mailto:support@monstatek.com" },
+          { label: "Legal Disclaimer", to: "/legal-disclaimer" },
+        ] },
       ],
       copyright: `© ${new Date().getFullYear()} MonstaTek LLC.`,
     },

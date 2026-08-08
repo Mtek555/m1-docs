@@ -1,17 +1,17 @@
 ---
 id: hardware-specifications
 title: Hardware Specifications
-description: Reference the documented M1 revision 2.x hardware and known publication limits.
+description: Reference the documented M1 revision 2.x hardware, antennas, and US/Canada certifications.
 sidebar_position: 5
 slug: /hardware-specifications
 ---
 
-<div className="guideMeta">Field Guide 05 · 5 min read · v0.8.x baseline</div>
+<div className="guideMeta">Field Guide 05 · 7 min read</div>
 
 ## Revision scope {#revision-scope}
 
 :::note[Hardware revision 2.x]
-These specifications describe M1 hardware revision 2.x and the v0.8.x public firmware family. Production details can change between revisions.
+These specifications apply to MonstaTek M1 hardware revision 2.x.
 :::
 
 ## Processor and display {#processor-display}
@@ -27,9 +27,9 @@ These specifications describe M1 hardware revision 2.x and the v0.8.x public fir
 
 | Module | Documented hardware |
 | --- | --- |
-| NFC / HF RFID | 13.56 MHz interface based on ST25R3916; support depth depends on card family |
-| LF RFID | 125 kHz interface with a round air-core coil antenna |
-| Sub-GHz | Si4463 transceiver with regional frequency configuration and a helical antenna |
+| NFC / HF RFID | 13.56 MHz ST25R3916 with a PCB inductive-loop antenna; gain is not applicable or specified for this near-field antenna |
+| LF RFID | 125 kHz interface with an inductive air-coil antenna; gain is not applicable or specified for this near-field antenna |
+| Sub-GHz | Si4463 with a −7 dBi, 38.1 × 8.9 mm helical multiband monopole covering 315 / 433 / 868 / 915 MHz |
 | Infrared | IR receive and transmit hardware for supported remote-control protocols |
 | USB | USB Type-C with CDC virtual serial and microSD mass storage |
 | microSD | Up to 256 GB; FAT32 or exFAT |
@@ -39,15 +39,28 @@ These specifications describe M1 hardware revision 2.x and the v0.8.x public fir
 | Item | Value |
 | --- | --- |
 | Firmware license | GPL-3.0 |
+| United States | FCC certified |
 | FCC ID | 2BSWU-M1 |
+| Canada | ISED certified |
+| IC | 34778-M1 |
 | Manufacturer | WILLTRONICS CO., LTD |
 | Applicant | MonstaTek LLC, San Jose, California, USA |
 
-:::warning[Publication limits]
-Maximum GPIO and external-rail current, production battery runtime and charge time, exact antenna gain, and final region-by-region regulatory wording still require internal confirmation.
+## United States and Canada certification {#us-canada-certification}
+
+:::note[FCC and ISED certification]
+The MonstaTek M1 is **FCC certified in the United States** and **ISED certified in Canada** under the identifiers listed below.
 :::
+
+| Region | Certification details |
+| --- | --- |
+| United States — FCC | FCC ID 2BSWU-M1, granted December 17, 2025. Grantee: MonstaTek LLC. TCB: IIA Lab Services, LLC. Three grants cover 125 kHz RFID under §15C, 13.56 MHz NFC under §15C, and Sub-GHz operation under §15.231 at 304.5–321.95, 433.075–434.775, and 915.0–927.95 MHz. |
+| Wi-Fi / Bluetooth | The FCC filing notes that the device contains a Wi-Fi module; Wi-Fi and Bluetooth Low Energy use the ESP32-C6 module's certification. |
+| RF exposure | The FCC filing meets the portable-use SAR exemption at 5 mm. |
+| Canada — ISED | IC 34778-M1. New Single Certification under RSS-210 Issue 11, RSS-102 Issue 6, and RSS-Gen Issue 5. It covers 125 kHz RFID, 13.56 MHz NFC, and the listed Sub-GHz bands, with PCB, coil, and helical antenna types respectively. |
+| Canadian representative | Representative attestation valid November 17, 2025 through November 17, 2027. |
 
 
 ---
 
-Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.
+Need help? Email [support@monstatek.com](mailto:support@monstatek.com) and include the firmware version and screen name.

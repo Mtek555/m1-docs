@@ -1,23 +1,27 @@
 ---
 id: gpio
 title: GPIO and Hardware Expansion
-description: Use external logic pins and switchable power rails conservatively.
+description: Use external logic pins and switchable power rails safely.
 sidebar_position: 13
 slug: /gpio
 ---
 
-<div className="guideMeta">Field Guide 13 · 8 min read · v0.8.x baseline</div>
+<div className="guideMeta">Field Guide 13 · 10 min read</div>
+
+:::warning
+For legal and authorized use only. Only test devices you own or have explicit permission to access.
+:::
 
 ## Electrical safety first {#electrical-safety}
 
-:::danger[3.3 V logic]
-Keep external signals at or below **3.3 V** unless the final production-board specification explicitly confirms a higher tolerance for the exact pin and mode. Incorrect voltage, current, polarity, or wiring can damage both devices.
+:::danger[5 V tolerance has limits]
+External-header signals are **5 V-tolerant only in digital I/O mode and only while the M1 is powered**. Do not drive a pin when the M1 is off. Analog-capable `PA9`, `PA10`, `PC1`, `PC2`, and `PC3` are limited to **VDDA + 0.3 V (about 3.6 V maximum)** when used in analog mode.
 :::
 
 - When the GPIO menu opens, controllable pins start as outputs at **Low**.
 - Leaving the GPIO menu returns the pins to a safe state and switches off external rails.
 - The 3.3 V and 5 V rails cannot be enabled at the same time.
-- The **USB-UART bridge** entry is present but not functional in the documented firmware.
+- Use **3.3 V logic** whenever the connected peripheral supports it; 5 V tolerance is a protection limit, not the default signaling voltage.
 
 ## GPIO menu {#gpio-menu}
 
@@ -26,7 +30,7 @@ Keep external signals at or below **3.3 V** unless the final production-board sp
 | GPIO Control | Selects a documented pin and toggles its output Low or High. |
 | 3.3V power | Enables the 3.3 V rail and disables the 5 V rail. |
 | 5V power | Enables the 5 V rail and disables the 3.3 V rail. |
-| USB-UART bridge | Placeholder for a future feature; not currently functional. |
+| USB-UART bridge | Bridges USB CDC to external UART1 on PA9 TX / PA10 RX at 3.3 V, or to the internal ESP32 UART. |
 
 ## External headers {#headers}
 
@@ -61,21 +65,43 @@ Keep external signals at or below **3.3 V** unless the final production-board sp
 3. Press **Center** to toggle the output between Low and High.
 4. Press **Back** when finished so the M1 can return pins and rails to their exit state.
 
-The documented control screen includes `PE2`, `PE4`, `PE5`, `PE6`, `PD12`, `PD13`, `PA14`, `PA13`, `PC2`, `PC3`, `PD0`, and `PD1`. `PA9` and `PA10` are reserved for the planned serial bridge.
+The documented control screen includes `PE2`, `PE4`, `PE5`, `PE6`, `PD12`, `PD13`, `PA14`, `PA13`, `PC2`, `PC3`, `PD0`, and `PD1`. `PA9` and `PA10` are reserved for the functional USB-UART bridge.
+
+## GPIO current limits {#gpio-current}
+
+| Limit | Value |
+| --- | --- |
+| Recommended design current | Approximately 8 mA or less per pin for reliable logic-level margins |
+| Absolute maximum per pin | 20 mA sourced or sunk; do not design normal loads to this ceiling |
+| Combined I/O source current | 140 mA maximum across all I/O pins |
+| Combined I/O sink current | 140 mA maximum across all I/O pins |
+
+:::danger[Absolute maximum is not an operating target]
+The **20 mA per-pin** and **140 mA aggregate** figures are STM32H573 silicon absolute maximum ratings. Exceeding them can cause incorrect operation or permanent damage. Use external drivers for higher-current loads.
+:::
+
+## Use the USB-UART bridge {#usb-uart-bridge}
+
+1. Open **GPIO > USB-UART bridge**.
+2. Use **Left / Right** to select **UART: TX (PA9), RX (PA10), 3.3 V** for the external header or **UART: ESP32** for the internal ESP32 connection.
+3. Press **Center** to start the selected bridge.
+4. Open the M1 USB CDC serial port on the connected computer. The default is **115200 baud, 8 data bits, no parity, 1 stop bit**; supported host line-coding changes are applied to the UART.
+5. Press **Back** to stop the bridge and return to the GPIO menu.
+
+:::note[Bridge targets]
+Choose the external UART1 header or the internal ESP32 connection.
+:::
 
 ## Power-rail limits {#power-rails}
 
-- Use the rails only for small, low-current peripherals.
+- Do not exceed **0.5 A** on the **3.3 V EXT** output.
+- Do not exceed **0.5 A** on the **5 V EXT** output.
 - Do not power motors, solenoids, relays, heaters, or other high-current loads directly from the M1.
 - Do not feed external power back into an enabled M1 rail.
 - Use a common ground between the M1 and the external circuit.
-- Treat `PC2` and `PC3` as 3.3 V maximum when used as analog inputs.
-
-:::warning[Current limit not yet published]
-The available documentation does not establish complete production-header or external-rail current limits. Do not publish or rely on a numeric limit until engineering confirms it.
-:::
+- Treat analog-capable `PA9`, `PA10`, `PC1`, `PC2`, and `PC3` as approximately **3.6 V maximum** when used in analog mode.
 
 
 ---
 
-Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.
+Need help? Email [support@monstatek.com](mailto:support@monstatek.com) and include the firmware version and screen name.

@@ -6,13 +6,7 @@ sidebar_position: 3
 slug: /features-overview
 ---
 
-<div className="guideMeta">Field Guide 03 · 5 min read · v0.8.x baseline</div>
-
-## Firmware scope {#firmware-scope}
-
-:::note[v0.8.x baseline]
-This field guide describes the verified v0.8.x menu family. Development-branch features are not treated as released user functions.
-:::
+<div className="guideMeta">Field Guide 03 · 5 min read</div>
 
 ## Radio and access tools {#radio-and-access-tools}
 
@@ -20,16 +14,16 @@ This field guide describes the verified v0.8.x menu family. Development-branch f
 | --- | --- |
 | NFC (13.56 MHz) | Detects supported cards and tags. Feature depth depends on the card family. |
 | RFID (125 kHz) | Reads, saves, emulates, and writes supported low-frequency ID formats. Writing requires a compatible rewritable tag. |
-| Sub-GHz | Records and replays supported sub-1 GHz signals, finds active frequencies, and shows regional configuration. |
+| Sub-GHz | Records and replays supported sub-1 GHz signals and finds active frequencies. |
 | Infrared | Learns supported remote commands, replays saved signals, and uses an optional database for universal remotes. |
 
 ## Wireless and expansion {#wireless-and-expansion}
 
 | Feature | What it does |
 | --- | --- |
-| Wi-Fi | Uses the ESP32-C6 to scan nearby 2.4 GHz access points in the documented baseline. |
-| Bluetooth | Provides BLE scanning and advertising in the documented baseline. |
-| GPIO | Provides 3.3 V logic control, headers, and switchable 3.3 V or 5 V rails. Published current limits remain incomplete. |
+| Wi-Fi | Uses the ESP32-C6 to scan nearby 2.4 GHz access points. |
+| Bluetooth | Provides BLE scanning and advertising. |
+| GPIO | Provides digital I/O, headers, a functional USB-UART bridge, and switchable 3.3 V or 5 V rails with a 0.5 A published limit. |
 | USB | Provides charging, CDC serial, and microSD mass-storage access. |
 
 ## Which features need a microSD card? {#storage-requirements}
@@ -38,11 +32,11 @@ This field guide describes the verified v0.8.x menu family. Development-branch f
 | --- | --- | --- |
 | NFC | Live detection and reading | Saving files and opening the Saved library |
 | RFID | Live reading and immediate emulation | Saving files and opening the Saved library |
-| Sub-GHz | Frequency Reader and regional information | Record and Replay |
+| Sub-GHz | Frequency Reader | Record and Replay |
 | Infrared | Learning and direct replay may operate | Universal remote database and saved files |
 | Wi-Fi / Bluetooth | Yes | Not required for scanning or advertising |
 
 
 ---
 
-Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.
+Need help? Email [support@monstatek.com](mailto:support@monstatek.com) and include the firmware version and screen name.

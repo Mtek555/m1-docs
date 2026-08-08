@@ -5,7 +5,7 @@
   --ifm-color-primary-darkest: #C91E26;
   --ifm-color-primary-light: #E8232C;
   --ifm-color-primary-lighter: #E8232C;
-  --ifm-color-primary-lightest: #FCE9EA;
+  --ifm-color-primary-lightest: #F4F5F7;
   --ifm-background-color: #FFFFFF;
   --ifm-background-surface-color: #FFFFFF;
   --ifm-font-family-base: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -18,6 +18,88 @@
   --ifm-color-content-secondary: #2A2B2F;
   --ifm-navbar-background-color: #FFFFFF;
   --ifm-footer-background-color: #17171A;
+}
+
+.m1-legal-page {
+  max-width: 900px;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.m1-legal-header {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.m1-legal-header h1 {
+  margin: 0.65rem 0 0;
+  font-size: clamp(2.7rem, 6vw, 4.1rem);
+  line-height: 1.03;
+  letter-spacing: -0.052em;
+}
+
+.m1-legal-eyebrow {
+  margin: 0;
+  color: var(--ifm-color-primary-dark);
+  font-size: 0.75rem;
+  font-weight: 850;
+  letter-spacing: 0.17em;
+}
+
+.m1-legal-sections {
+  padding-top: 1rem;
+}
+
+.m1-legal-section {
+  display: grid;
+  grid-template-columns: 2.65rem minmax(0, 1fr);
+  gap: 1.25rem;
+  padding: 2.1rem 0;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.m1-legal-number {
+  width: 2.15rem;
+  height: 2.15rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-color-primary-dark);
+  font-size: 0.75rem;
+  font-weight: 850;
+}
+
+.m1-legal-section h2 {
+  margin: 0.18rem 0 0.8rem;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.m1-legal-section p {
+  margin: 0;
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+
+@media (max-width: 720px) {
+  .m1-legal-section {
+    grid-template-columns: 2.15rem minmax(0, 1fr);
+    gap: 0.85rem;
+    padding: 1.75rem 0;
+  }
+
+  .m1-legal-number {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+
+  .m1-legal-section h2 {
+    font-size: 1.1rem;
+  }
 }
 [data-theme='dark'] {
   --ifm-background-color: #17171A;
@@ -37,15 +119,15 @@
 .button--primary:hover { color: #FFFFFF; background: #C91E26; border-color: #C91E26; }
 .theme-doc-sidebar-container { border-right-color: rgba(138, 141, 147, .24) !important; }
 .menu__link { font-size: 13px; }
-.menu__link--active { color: #C91E26; background: #FCE9EA; }
-[data-theme='dark'] .menu__link--active { color: #FFFFFF; background: rgba(232, 35, 44, .18); }
+.menu__link--active { color: #C91E26; background: #F4F5F7; }
+[data-theme='dark'] .menu__link--active { color: #FFFFFF; background: #2A2B2F; }
 .theme-doc-markdown h1 { font-size: clamp(42px, 6vw, 64px); letter-spacing: -.05em; }
 .theme-doc-markdown h2 { margin-top: 2.2em; letter-spacing: -.025em; }
 .theme-doc-markdown table { display: table; width: 100%; font-size: 13px; }
 .theme-doc-markdown table thead { background: #F4F5F7; }
 [data-theme='dark'] .theme-doc-markdown table thead { background: #2A2B2F; }
 .theme-doc-markdown .admonition { border-radius: 6px; }
-.alert--secondary, .alert--success, .alert--warning, .alert--danger { --ifm-alert-background-color: #FCE9EA; --ifm-alert-border-color: #E8232C; --ifm-alert-foreground-color: #17171A; }
-[data-theme='dark'] .alert--secondary, [data-theme='dark'] .alert--success, [data-theme='dark'] .alert--warning, [data-theme='dark'] .alert--danger { --ifm-alert-background-color: rgba(232, 35, 44, .14); --ifm-alert-foreground-color: #FFFFFF; }
+.alert--secondary, .alert--success, .alert--warning, .alert--danger { --ifm-alert-background-color: #F4F5F7; --ifm-alert-border-color: #E8232C; --ifm-alert-foreground-color: #17171A; }
+[data-theme='dark'] .alert--secondary, [data-theme='dark'] .alert--success, [data-theme='dark'] .alert--warning, [data-theme='dark'] .alert--danger { --ifm-alert-background-color: #2A2B2F; --ifm-alert-foreground-color: #FFFFFF; }
 .guideMeta { margin: 20px 0 34px; color: #8A8D93; font-size: 12px; }
 .footer { border-top: 1px solid #2A2B2F; }
