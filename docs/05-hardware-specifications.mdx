@@ -1,0 +1,53 @@
+---
+id: hardware-specifications
+title: Hardware Specifications
+description: Reference the documented M1 revision 2.x hardware and known publication limits.
+sidebar_position: 5
+slug: /hardware-specifications
+---
+
+<div className="guideMeta">Field Guide 05 · 5 min read · v0.8.x baseline</div>
+
+## Revision scope {#revision-scope}
+
+:::note[Hardware revision 2.x]
+These specifications describe M1 hardware revision 2.x and the v0.8.x public firmware family. Production details can change between revisions.
+:::
+
+## Processor and display {#processor-display}
+
+| Item | Specification |
+| --- | --- |
+| Main MCU | STM32H573VIT6, 32-bit Arm Cortex-M33, 2 MB flash, LQFP100 |
+| Wireless processor | ESP32-C6 for 2.4 GHz Wi-Fi and Bluetooth Low Energy; separate firmware |
+| Display controller | ST7586s |
+| Display panel | ERC240160 monochrome panel, documented as 240 × 160 pixels |
+
+## Radios and connectivity {#radios-connectivity}
+
+| Module | Documented hardware |
+| --- | --- |
+| NFC / HF RFID | 13.56 MHz interface based on ST25R3916; support depth depends on card family |
+| LF RFID | 125 kHz interface with a round air-core coil antenna |
+| Sub-GHz | Si4463 transceiver with regional frequency configuration and a helical antenna |
+| Infrared | IR receive and transmit hardware for supported remote-control protocols |
+| USB | USB Type-C with CDC virtual serial and microSD mass storage |
+| microSD | Up to 256 GB; FAT32 or exFAT |
+
+## Identification {#identification}
+
+| Item | Value |
+| --- | --- |
+| Firmware license | GPL-3.0 |
+| FCC ID | 2BSWU-M1 |
+| Manufacturer | WILLTRONICS CO., LTD |
+| Applicant | MonstaTek LLC, San Jose, California, USA |
+
+:::warning[Publication limits]
+Maximum GPIO and external-rail current, production battery runtime and charge time, exact antenna gain, and final region-by-region regulatory wording still require internal confirmation.
+:::
+
+
+---
+
+Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.

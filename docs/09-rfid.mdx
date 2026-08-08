@@ -1,0 +1,61 @@
+---
+id: rfid
+title: RFID (125 kHz)
+description: Read, save, emulate, and write supported low-frequency identifiers.
+sidebar_position: 9
+slug: /rfid
+---
+
+<div className="guideMeta">Field Guide 09 · 6 min read · v0.8.x baseline</div>
+
+## Documented formats {#rfid-formats}
+
+:::warning[Before you start]
+A microSD card is required for saving and for the **Saved** library. Use RFID functions only on equipment you own or have explicit permission to test.
+:::
+
+| Format | Notes |
+| --- | --- |
+| EM4100 Full / 32-bit / 16-bit | ID-based LF RFID formats used by many older tags and regional systems. |
+| H10301 (HID Prox) | Common 26-bit format using a Facility Code and Card Number. |
+
+## RFID menu {#rfid-menu}
+
+| Menu item | What it does |
+| --- | --- |
+| Read | Scans a supported 125 kHz tag. |
+| Saved | Opens and manages saved `.rfid` files. |
+| Add | Enters a known supported identifier manually. |
+| Utilities | Opens additional LF RFID utilities available in the installed firmware. |
+
+## Read a tag {#read-tag}
+
+1. Open **RFID > Read**.
+2. Hold the tag flat against the round LF antenna area near the upper center of the rear casing.
+3. Keep the tag still until the M1 beeps and displays the result.
+4. Choose the supported **Save**, **Emulate**, or **Write** action.
+
+## Save, emulate, or write {#rfid-actions}
+
+| Action | What it does |
+| --- | --- |
+| Save | Stores the tag as an `.rfid` file. |
+| Emulate | Makes the M1 present the supported identifier to a reader. |
+| Write | Copies supported data to a compatible rewritable LF tag such as T5577. |
+
+:::danger[Writing tags]
+Standard EM4100 tags are normally read-only. Use a compatible rewritable tag and keep it motionless while the M1 writes and verifies the result.
+:::
+
+## Troubleshooting {#rfid-troubleshooting}
+
+| Problem | What to try |
+| --- | --- |
+| Tag is not detected | Hold it flat, rotate it 90 degrees, move away from metal, and confirm it is 125 kHz rather than NFC. |
+| Write fails | Confirm the destination is a compatible rewritable LF tag and keep it still. |
+| Saved library will not open | Insert and mount a readable microSD card. |
+
+
+---
+
+Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.

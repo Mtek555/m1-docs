@@ -1,0 +1,74 @@
+---
+id: sub-ghz
+title: Sub-GHz Radio
+description: Record, replay, and locate supported sub-1 GHz signals.
+sidebar_position: 7
+slug: /sub-ghz
+---
+
+<div className="guideMeta">Field Guide 07 · 7 min read · v0.8.x baseline</div>
+
+## Sub-GHz menu {#subghz-menu}
+
+:::warning[Before you start]
+A microSD card is required for **Record** and **Replay**. Capture or transmit only signals from equipment you own or are explicitly authorized to test.
+:::
+
+| Menu item | What it does |
+| --- | --- |
+| Record | Captures a signal and saves it to the microSD card. |
+| Replay | Transmits a previously saved `.sgh` recording. |
+| Frequency Reader | Sweeps for an active signal and displays frequency and RSSI. |
+| Regional Information | Shows the frequency ranges configured for the device region. |
+
+## Record a signal {#record-signal}
+
+1. Open **Sub-GHz > Record**.
+2. Use **Left / Right** to choose the frequency.
+3. Press **Center** to begin recording.
+4. Activate the authorized remote or transmitter.
+5. Press **Center** or **Back** to stop.
+6. Use the on-screen action to save, load for replay, or discard the capture.
+
+Saved captures use the `.sgh` extension and are stored in `/SUBGHZ`.
+
+## Replay a saved signal {#replay-signal}
+
+1. Open **Sub-GHz > Replay**.
+2. Select a saved `.sgh` file.
+3. Press **Center** to transmit the recording.
+
+:::note[Rolling-code systems]
+Raw replay normally will not operate systems using rolling codes, challenge-response authentication, or encryption. That is expected behavior.
+:::
+
+## Use Frequency Reader {#frequency-reader}
+
+- Sweeps the configured bands automatically.
+- Displays detected frequency and RSSI signal strength.
+- Keeps recent detections visible and sounds a beep when a signal is found.
+- Locates an active frequency; it does not identify or decode the protocol.
+
+Documented presets: `300.000`, `310.000`, `315.000`, `345.000`, `372.000`, `390.000`, `433.000`, `433.920`, and `915.000 MHz`.
+
+## Regional information {#regional-information}
+
+The screen reports the region stored in firmware and its configured frequency ranges. The North America guide baseline lists `310.000–321.950 MHz`, `433.050–434.790 MHz`, and `915.000–928.000 MHz`.
+
+:::danger[Radio law]
+The regional screen is a configuration reference, not legal advice. Legal limits can depend on frequency, power, antenna, duty cycle, modulation, and the type of transmission.
+:::
+
+## Troubleshooting {#subghz-troubleshooting}
+
+| Problem | What to try |
+| --- | --- |
+| Recording will not start | Insert and mount a readable microSD card. |
+| Replay list is empty | Confirm `.sgh` files are in `/SUBGHZ`. |
+| Frequency Reader finds nothing | Move the transmitter closer and trigger it repeatedly while scanning. |
+| Replay has no effect | Confirm frequency, distance, and target. The source may use a rolling or encrypted protocol. |
+
+
+---
+
+Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.

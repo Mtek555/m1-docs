@@ -1,0 +1,53 @@
+---
+id: wi-fi
+title: Wi-Fi
+description: Scan nearby 2.4 GHz access points with the documented baseline firmware.
+sidebar_position: 11
+slug: /wi-fi
+---
+
+<div className="guideMeta">Field Guide 11 · 4 min read · v0.8.x baseline</div>
+
+## Documented v0.8.x scope {#wifi-scope}
+
+:::note[Released baseline]
+This page documents **Scan AP**, the Wi-Fi function exposed in the verified v0.8.x menu baseline. Development-branch components are not presented as released functions.
+:::
+
+## Scan for networks {#scan-networks}
+
+1. Open **Wi-Fi > Scan AP**.
+2. Wait while the M1 shows **Initializing...** and **Scanning AP...**.
+3. Review the list of nearby 2.4 GHz access points.
+4. Use the on-screen controls to move through results, then press **Back** to exit.
+
+:::tip[No card required]
+Wi-Fi scanning does not require a microSD card.
+:::
+
+## Understand the fields {#network-fields}
+
+| Field | Meaning |
+| --- | --- |
+| SSID | Network name. A hidden network may appear without a name. |
+| BSSID | Access point hardware address. |
+| RSSI | Received signal strength in dBm. A value closer to zero is stronger. |
+| Auth Mode | Security mode reported by the access point. |
+
+## Troubleshooting {#wifi-troubleshooting}
+
+| Message or problem | What to try |
+| --- | --- |
+| ESP32 not ready! | Exit the Wi-Fi menu and re-enter it to restart initialization. |
+| Failed. Let retry! | Wait several seconds and scan again. |
+| No networks found | Confirm nearby networks use 2.4 GHz and move away from heavy shielding. |
+| Inconsistent results | Restart the M1 and confirm the wireless firmware matches the official release instructions. |
+
+:::warning[Authorized use]
+Scanning displays information broadcast by nearby access points. Do not connect to, interfere with, or test networks without authorization.
+:::
+
+
+---
+
+Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.

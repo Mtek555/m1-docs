@@ -1,0 +1,54 @@
+---
+id: bluetooth
+title: Bluetooth
+description: Scan for BLE advertisements and use the documented advertising mode.
+sidebar_position: 12
+slug: /bluetooth
+---
+
+<div className="guideMeta">Field Guide 12 · 4 min read · v0.8.x baseline</div>
+
+## Documented v0.8.x scope {#bluetooth-scope}
+
+| Menu item | What it does |
+| --- | --- |
+| Scan | Scans for nearby BLE advertisements and shows a scrollable result list. |
+| Advertise | Starts the documented M1 BLE advertising mode until you exit. |
+
+:::note[Released baseline]
+This page does not treat every BLE or GATT component in a source tree or development branch as a finished user-interface feature.
+:::
+
+## Scan for BLE devices {#scan-ble}
+
+1. Open **Bluetooth > Scan**.
+2. Wait while the wireless processor initializes and the screen shows **Scanning BLE...**.
+3. Use **Up / Down** to move through results.
+4. Press **Back** to stop and return to the Bluetooth menu.
+
+The documented public-source baseline configures a scan period of approximately ten seconds before displaying results.
+
+## Advertise {#advertise}
+
+1. Open **Bluetooth > Advertise**.
+2. Wait for the wireless processor to initialize and start advertising.
+3. Review the advertised values shown on the screen.
+4. Press **Back** to stop advertising and reset the BLE session.
+
+## Troubleshooting {#ble-troubleshooting}
+
+| Message or problem | What to try |
+| --- | --- |
+| ESP32 not ready! | Exit and re-enter Bluetooth, or reboot the M1. |
+| Failed. Let retry! | Wait several seconds and try again. |
+| No devices appear | Move closer, confirm the target is advertising BLE, and repeat the scan. |
+| Advertise does not start | Restart the M1 and confirm the ESP32 firmware matches the main firmware release. |
+
+:::warning[Privacy and authorization]
+BLE advertisements can include identifiers. Scan and advertise responsibly; do not impersonate devices or services without authorization.
+:::
+
+
+---
+
+Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.

@@ -1,0 +1,62 @@
+---
+id: infrared
+title: Infrared
+description: Learn, save, replay, and transmit supported remote-control commands.
+sidebar_position: 10
+slug: /infrared
+---
+
+<div className="guideMeta">Field Guide 10 · 6 min read · v0.8.x baseline</div>
+
+## Infrared menu {#infrared-menu}
+
+| Menu item | What it does |
+| --- | --- |
+| Universal Remotes | Tries database codes for TVs, audio players, projectors, and air conditioners. |
+| Learn | Captures a button from an existing remote. |
+| Replay | Opens and transmits saved remote data. |
+
+## Learn a remote button {#learn-command}
+
+1. Open **Infrared > Learn**.
+2. Point the remote at the M1 receiver from approximately **5 to 50 cm** away.
+3. Press and hold the remote button for about one second.
+4. When recognized, review **Protocol**, **Address**, and **Command** on screen.
+
+| Documented learn protocol | Common examples |
+| --- | --- |
+| NEC | LG, Onkyo, Apple, and others |
+| SIRCS | Sony |
+| Samsung | Samsung televisions and related devices |
+| Kaseikyo | Panasonic, JVC, and related devices |
+
+:::note[Learn versus transmit]
+The M1 may transmit additional variants through saved or database files. A protocol being available for transmission does not mean the **Learn** screen can decode it.
+:::
+
+## Replay and Universal Remotes {#replay-universal}
+
+- **Replay:** choose a saved remote and transmit its stored command.
+- **Universal Remotes:** choose a device category and try database commands until the authorized target responds.
+
+:::warning[Database required]
+Universal Remotes requires the official infrared database files on the microSD card.
+:::
+
+## Troubleshooting {#ir-troubleshooting}
+
+| Problem | Likely cause | What to try |
+| --- | --- | --- |
+| Signal not recognized | Unsupported learn protocol | Try Universal Remotes or another supported remote. |
+| Inconsistent reads | Sunlight or flickering light | Move to a shaded location and aim directly at the receiver. |
+| Short transmit range | Low battery or blocked line of sight | Charge the M1 and point the top edge toward the target. |
+| Remote is too bright / overdrives | Remote is too close | Increase the learning distance by several centimeters. |
+
+:::warning[Responsible use]
+Only control devices you own or are authorized to operate.
+:::
+
+
+---
+
+Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.

@@ -1,0 +1,69 @@
+---
+id: microsd-card
+title: microSD Card
+description: Prepare removable storage, manage files, and avoid corruption.
+sidebar_position: 6
+slug: /microsd-card
+---
+
+<div className="guideMeta">Field Guide 06 · 5 min read · v0.8.x baseline</div>
+
+## Card requirements {#card-requirements}
+
+| Item | Requirement |
+| --- | --- |
+| Maximum documented capacity | 256 GB |
+| Supported file systems | FAT32 and exFAT |
+| On-device formatting | **Settings > Storage > Format SD Card** |
+
+With the M1 held horizontally, the card slot is along the lower edge. Insert the card with its metal contacts facing upward and press gently until it latches.
+
+## What the card stores {#stored-files}
+
+| Location or extension | Purpose |
+| --- | --- |
+| `/NFC` and `.nfc` | Saved NFC cards and tags |
+| `/RFID` and `.rfid` | Saved 125 kHz RFID tags |
+| `/SUBGHZ` and `.sgh` | Saved Sub-GHz captures |
+| Infrared database folders | Universal remote code database |
+| `.bin` and `.md5` | Main or ESP32 firmware update files |
+
+:::note[Saving requires a card]
+Many live scans work without a card, but saved libraries, recordings, and the infrared database require a readable, mounted microSD card.
+:::
+
+## Manage the card on the M1 {#manage-card}
+
+| Menu item | What it does |
+| --- | --- |
+| About SD Card | Shows the label, file system, capacity, and free space. |
+| Explore SD Card | Browses folders and files. |
+| Mount SD Card | Returns the card to normal M1 application access. |
+| Unmount SD Card | Releases the card from M1 applications and prepares it for USB mass storage. |
+| Format SD Card | Erases and reformats the card. All files are lost. |
+
+## Access the card from a computer {#computer-access}
+
+1. Open **Settings > Storage > Unmount SD Card**.
+2. Connect the M1 to the computer with a data-capable USB-C cable.
+3. Open the removable drive and copy files normally.
+4. Eject the drive from the computer before disconnecting USB.
+5. Open **Settings > Storage > Mount SD Card** before using saved libraries again.
+
+:::danger[Avoid file corruption]
+Do not remove the card, disconnect USB, or remount the card while a computer is writing files.
+:::
+
+## Troubleshooting {#sd-troubleshooting}
+
+| Problem | What to try |
+| --- | --- |
+| SD-card error icon | Reinsert the card and confirm it is FAT32 or exFAT. |
+| Saved library will not open | Mount the card and confirm the expected folder exists. |
+| Computer shows no drive | Unmount the card on the M1, reconnect USB, and try another data cable. |
+| Files appear corrupted | Eject properly, avoid removing the card during writes, and test another card. |
+
+
+---
+
+Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.

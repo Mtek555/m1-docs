@@ -1,0 +1,57 @@
+---
+id: charging
+title: Charging
+description: Charge the battery safely and understand the status information.
+sidebar_position: 2
+slug: /charging
+---
+
+<div className="guideMeta">Field Guide 02 · 3 min read · v0.8.x baseline</div>
+
+## Battery basics {#battery-basics}
+
+| Item | Documented value |
+| --- | --- |
+| Battery | 2,100 mAh rechargeable lithium battery |
+| Input | USB Type-C, 5 V / 1 A |
+| Charge time | Production claim requires final internal confirmation |
+| Runtime | Production claim requires final internal confirmation; feature use changes runtime |
+
+## Charge the M1 {#charge-the-m1}
+
+1. Connect the USB-C cable to the M1.
+2. Connect the other end to a standard **5 V USB power source**.
+3. Leave the device connected until charging is complete. The M1 may be used while it charges.
+
+| Indicator | Meaning |
+| --- | --- |
+| Red LED on | The battery is charging. |
+| Red LED off | Charging may be complete, disconnected, or not started. Check **Battery Info** when uncertain. |
+
+## Check battery status {#battery-info}
+
+Open **Settings > Power > Battery Info**. The screen reports battery level, temperature, voltage, health, and charging status.
+
+| Stage | Meaning |
+| --- | --- |
+| Not charging | No active charging cycle. |
+| Pre-charge | The battery is being recovered at low current. |
+| Fast Charge | Normal charging is in progress. |
+| Complete | The charging cycle has finished. |
+
+:::danger[Battery safety]
+Disconnect the M1 if the enclosure becomes unusually hot, damaged, swollen, or wet. Do not continue charging a visibly damaged device.
+:::
+
+## Troubleshooting {#charging-troubleshooting}
+
+| Problem | What to try |
+| --- | --- |
+| Red LED never turns on | Try another cable and a known-good 5 V source. Check the USB-C port for debris. |
+| Battery level does not increase | Restart the M1 and review **Battery Info**. Contact support if voltage or temperature readings are abnormal. |
+| Device shuts down quickly | Charge fully, update to the current official firmware, and compare the **Level** and **Health** readings. |
+
+
+---
+
+Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.

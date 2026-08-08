@@ -1,0 +1,51 @@
+---
+id: usb
+title: USB
+description: Use charging, CDC serial, and microSD mass storage correctly.
+sidebar_position: 14
+slug: /usb
+---
+
+<div className="guideMeta">Field Guide 14 · 5 min read · v0.8.x baseline</div>
+
+## USB functions {#usb-functions}
+
+| Function | What it does |
+| --- | --- |
+| Charging | Powers the device and charges the internal battery from a standard 5 V source. |
+| CDC virtual serial | Presents a serial interface for supported logs, commands, and development workflows. |
+| MSC mass storage | Makes the microSD card available to a computer as a removable drive. |
+
+## Use microSD mass storage {#usb-storage}
+
+1. Open **Settings > Storage > Unmount SD Card**.
+2. Connect the M1 with a data-capable USB-C cable.
+3. Open the removable drive and copy the required files.
+4. Eject the drive safely from the computer.
+5. Disconnect USB or return to the M1, then open **Settings > Storage > Mount SD Card**.
+
+:::danger[Avoid file corruption]
+Do not remove the microSD card, disconnect USB, or remount the card while the computer is writing files.
+:::
+
+## CDC serial is not the GPIO bridge {#cdc-and-bridge}
+
+When supported by the active firmware and operating system, the M1 appears as a CDC virtual serial port. This built-in interface is separate from the GPIO menu's planned USB-UART bridge.
+
+:::note[Current bridge status]
+The **USB-UART bridge** entry intended for `PA9 / PA10` is not functional in the documented firmware.
+:::
+
+## Troubleshooting {#usb-troubleshooting}
+
+| Problem | What to try |
+| --- | --- |
+| M1 charges but no drive appears | Use a data cable and unmount the microSD card on the M1. |
+| No serial port appears | Try another cable or port and check the operating-system device list or driver requirements. |
+| Saved libraries fail after computer access | Eject the drive, disconnect USB, and mount the card again in Settings. |
+| Files become corrupted | Avoid simultaneous M1/computer access and always eject before disconnecting. |
+
+
+---
+
+Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.

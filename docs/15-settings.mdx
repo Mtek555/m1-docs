@@ -1,0 +1,53 @@
+---
+id: settings
+title: Settings
+description: Understand storage, power, firmware update, and device information menus.
+sidebar_position: 15
+slug: /settings
+---
+
+<div className="guideMeta">Field Guide 15 · 5 min read · v0.8.x baseline</div>
+
+## Settings menu scope {#settings-scope}
+
+The documented Settings menu contains **Storage**, **Power**, **Firmware update**, **ESP32 update**, and **About**.
+
+:::note[User-visible menu only]
+This field guide documents settings users can open in the verified baseline. It does not list source components that are not exposed in the normal menu.
+:::
+
+## Storage {#storage-settings}
+
+| Menu item | What it does |
+| --- | --- |
+| About SD Card | Shows label, file system, capacity, and free space. |
+| Explore SD Card | Browses files and folders. **Up / Down** moves, **Center** opens, and **Back** goes up. |
+| Mount SD Card | Returns the card to M1 application access. |
+| Unmount SD Card | Releases the card for USB mass-storage access. |
+| Format SD Card | Erases and reformats the card. All data is lost. |
+
+## Power {#power-settings}
+
+| Menu item | What it does |
+| --- | --- |
+| Battery Info | Shows battery Level, Temperature, Voltage, Health, and charging state. |
+| Reboot | Restarts the M1 after confirmation. |
+| Power Off | Shuts the M1 down after confirmation. |
+
+## Firmware update menus {#update-settings}
+
+- **Firmware update:** selects and validates the main firmware `.bin`; installation requires at least 50% battery.
+- **ESP32 update:** uses an ESP32 `.bin`, matching `.md5`, and program start address. The documented default is `0x10000`.
+
+:::danger[Use official instructions]
+Do not update the ESP32-C6 independently unless the official main-firmware release instructs you to do so.
+:::
+
+## About {#about}
+
+Use **Left / Right** to move through firmware version and active storage-bank information, manufacturer information, and the device graphic. Press **Back** to exit.
+
+
+---
+
+Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.

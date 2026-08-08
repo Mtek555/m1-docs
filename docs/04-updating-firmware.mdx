@@ -1,0 +1,59 @@
+---
+id: updating-firmware
+title: Updating Firmware
+description: Update the STM32 and ESP32-C6 safely without mixing the two images.
+sidebar_position: 4
+slug: /updating-firmware
+---
+
+<div className="guideMeta">Field Guide 04 · 6 min read · v0.8.x baseline</div>
+
+## The M1 has two firmware images {#two-firmware-images}
+
+The main STM32 processor and the ESP32-C6 wireless processor run separate firmware. Updating one does not update the other.
+
+:::warning[Before updating]
+Charge the battery to at least 50%, keep the microSD card inserted, and do not power off or remove the card while an update is running.
+:::
+
+## Update the main M1 firmware {#update-main-firmware}
+
+1. Download the latest official M1 firmware release.
+2. Copy the main firmware `.bin` file to the microSD card.
+3. Open **Settings > Firmware update > Image File**.
+4. Select the `.bin` file and review the current and new version information.
+5. When the screen shows **Ready to flash!**, select **Firmware update**.
+6. Wait for the update to finish. The M1 restarts after a successful installation.
+
+## Update messages {#update-messages}
+
+| Message | Meaning |
+| --- | --- |
+| Battery level < 50%! | Charge the M1 before trying again. |
+| Invalid image file! | The selected file is incompatible or has an unexpected size. |
+| CRC failed! | The file is incomplete or corrupted. Download and copy it again. |
+| Ready to flash! | The image passed validation. |
+| Update successfully! | Installation completed and the device will restart. |
+
+## Update the ESP32-C6 firmware {#update-wireless-firmware}
+
+:::danger[Advanced procedure]
+Only update the wireless processor when official MonstaTek instructions require it. The wrong image or address can leave Wi-Fi and Bluetooth unavailable.
+:::
+
+- On-device path: **Settings > ESP32 update**.
+- The card must contain the ESP32 `.bin` file and its matching `.md5` file.
+- The default program start address shown by the documented firmware is `0x10000`.
+
+## Recovery {#recovery}
+
+If the M1 becomes unresponsive, hold **Back + Right** for about five seconds to force a reboot. This does not replace a firmware image that failed validation.
+
+:::note[Official sources only]
+Use firmware from the MonstaTek GitHub releases page or the official update page. Do not use third-party firmware for a support recovery.
+:::
+
+
+---
+
+Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.

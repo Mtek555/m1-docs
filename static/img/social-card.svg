@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="34" height="630" fill="#E8232C"/>
+  <circle cx="190" cy="190" r="92" fill="#E8232C"/>
+  <polygon points="120,220 154,153 173,181 190,150 207,181 226,153 260,220 222,220 208,193 190,220 172,193 158,220" fill="#FFFFFF"/>
+  <text x="98" y="375" font-family="Inter, Arial" font-size="70" font-weight="800" fill="#17171A">MonstaTek M1</text>
+  <text x="98" y="452" font-family="Inter, Arial" font-size="70" font-weight="800" fill="#E8232C">Field Guide</text>
+  <text x="102" y="520" font-family="Inter, Arial" font-size="28" fill="#2A2B2F">Capable technology, clearly presented.</text>
+</svg>

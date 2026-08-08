@@ -1,0 +1,69 @@
+---
+id: nfc
+title: NFC (13.56 MHz)
+description: Read, inspect, save, and use supported NFC cards and tags.
+sidebar_position: 8
+slug: /nfc
+---
+
+<div className="guideMeta">Field Guide 08 · 6 min read · v0.8.x baseline</div>
+
+## What NFC support means {#nfc-scope}
+
+:::warning[Before you start]
+A microSD card is required for saving and for the **Saved** library. Use NFC functions only on cards and systems you own or are authorized to test.
+:::
+
+| Card family | Documented behavior |
+| --- | --- |
+| Ultralight / NTAG Type 2 | Full read workflow with save and supported emulation. |
+| MIFARE Classic 1K / 4K / Mini | Detected and identified; full Classic read-and-copy support is not documented in this baseline. |
+| FeliCa, ISO-15693, ISO-14443B | Detection and identity information; feature depth varies by family. |
+
+## NFC menu {#nfc-menu}
+
+| Menu item | What it does |
+| --- | --- |
+| Read | Scans a card and shows information available for its family. |
+| Saved | Opens saved `.nfc` files and their supported actions. |
+| Tools | Opens utilities available in the installed firmware and for the selected card type. |
+
+## Read a card or tag {#read-card}
+
+1. Open **NFC > Read**.
+2. Place one card flat against the upper half of the rear casing.
+3. Keep the card still until the read completes.
+4. Press **Right** to open the actions available after a successful read.
+
+## Actions and fields {#nfc-actions}
+
+| Action | What it does |
+| --- | --- |
+| Save | Stores the result as an `.nfc` file on the microSD card. |
+| Emulate UID | Presents the stored serial number to a reader. |
+| Utils | Opens card-related utilities supported by the current firmware. |
+| Info | Shows detailed card information. |
+
+| Field | Meaning |
+| --- | --- |
+| UID | Card or tag serial number; commonly 4, 7, or 10 bytes. |
+| ATQA | Two-byte identification value used during ISO-14443A selection. |
+| SAK | Selection response that helps identify technology and capabilities. |
+
+:::danger[UID emulation limits]
+UID emulation only works with readers that rely on the serial number alone. It does not reproduce secure authentication, cryptographic keys, or payment credentials.
+:::
+
+## Troubleshooting {#nfc-troubleshooting}
+
+| Problem | What to try |
+| --- | --- |
+| Card is not detected | Remove blocking sleeves or metal and hold one card flat against the rear antenna area. |
+| Multiple cards interfere | Separate the target card from wallets, phones, and other contactless cards. |
+| Save is unavailable | Insert and mount a microSD card. |
+| Only basic information appears | The card family may be detectable but not fully supported for memory reading or emulation. |
+
+
+---
+
+Found a firmware difference? Email [support@monstatek.com](mailto:support@monstatek.com) with the firmware version and screen name.
