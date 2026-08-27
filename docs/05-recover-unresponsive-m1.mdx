@@ -1,0 +1,104 @@
+---
+id: recover-unresponsive-m1
+title: Recover an Unresponsive M1
+description: Restore the STM32 firmware through the external SWD header with an ST-Link programmer.
+sidebar_position: 5
+slug: /recover-unresponsive-m1
+---
+
+<div className="guideMeta">Advanced recovery · 12 min read</div>
+
+:::danger[Last-resort procedure]
+SWD recovery erases and replaces the main STM32 firmware. Use it only when the M1 cannot complete a normal firmware update. Incorrect wiring or programming the wrong file can leave the device unusable.
+:::
+
+## Try a forced reboot first {#forced-reboot}
+
+Hold **Back + Right** for about five seconds. If the M1 starts, use the normal [firmware update procedure](./updating-firmware) instead of SWD recovery.
+
+If it remains unresponsive, continue below or contact [support@monstatek.com](mailto:support@monstatek.com).
+
+## What you need {#what-you-need}
+
+- An **ST-Link V2**, ST-Link V3, or a Nucleo board with its ST-Link section available.
+- Three short signal wires. A fourth wire is recommended when the programmer exposes **VTref**, **VAPP**, or **Target 3.3 V sense**.
+- A USB-C cable and USB power source for the M1.
+- [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html) from STMicroelectronics.
+- The latest official M1 `*_wCRC.bin` file from [MonstaTek firmware releases](https://github.com/Monstatek/M1/releases).
+
+:::warning[Use the STM32 firmware]
+Do not select an ESP32-C6 image, factory archive, `.md5` file, or third-party firmware. The recovery image is the M1 STM32 `*_wCRC.bin` file.
+:::
+
+## Find the recovery pins {#recovery-pins}
+
+The pin labels run along the M1's long connector edge. Use the **10-pin group labeled 9 through 18**. The illustration follows the numbering printed on the enclosure.
+
+<figure style={{textAlign: "center"}}>
+  <img
+    src="/img/m1-external-pinout.svg"
+    alt="M1 external pinout showing enclosure pins 1 through 18"
+    style={{width: "210px", maxWidth: "70%"}}
+  />
+  <figcaption>M1 enclosure pin numbering. SWD uses pins 9, 10, 11, and 18.</figcaption>
+</figure>
+
+The same pins may be described in board documentation as **J7 pins 1, 2, 3, and 10**. The table below uses the enclosure numbers visible on the device.
+
+| ST-Link signal | M1 enclosure pin | M1 signal | Purpose |
+| --- | ---: | --- | --- |
+| VTref / VAPP | 9 | +3.3 V | Target-voltage reference; do not use it as the M1's power source |
+| SWCLK | 10 | PA14 | SWD clock |
+| SWDIO | 11 | PA13 | SWD data |
+| GND | 18 | GND | Common ground |
+
+:::danger[Do not connect to 5 V]
+Do not connect the programmer to enclosure pin **1 (+5 V)**. Power the M1 from its own USB-C connection during recovery.
+:::
+
+## Connect the programmer {#connect-programmer}
+
+1. Disconnect the ST-Link from the computer and disconnect USB power from the M1.
+2. Connect **SWCLK** to M1 pin **10**.
+3. Connect **SWDIO** to M1 pin **11**.
+4. Connect **GND** to M1 pin **18**.
+5. If the ST-Link has a target-voltage-sense input, connect **VTref/VAPP** to M1 pin **9**.
+6. Recheck the labels at both ends of every wire. Keep the wires short.
+7. Power the M1 from its own USB-C cable.
+8. Connect the ST-Link to the computer.
+
+If you are using the ST-Link section of a Nucleo board, disconnect it from the Nucleo target MCU as described in that board's manual before wiring it to the M1.
+
+## Reflash the STM32 {#reflash-stm32}
+
+1. Open **STM32CubeProgrammer** and select **ST-LINK**.
+2. Select the detected probe and choose **SWD** as the port.
+3. Select **Connect**. Confirm that CubeProgrammer identifies an STM32H573 device before continuing.
+4. Open **Erasing & Programming**.
+5. Select the official M1 `*_wCRC.bin` file.
+6. Set the start address to **`0x08000000`**.
+7. Enable **Verify programming**.
+8. Perform a **full chip erase**, then start programming.
+9. Wait until both programming and verification report success. Do not disconnect power or move the wires during this operation.
+10. Select **Disconnect**, unplug the ST-Link, and then restart the M1.
+
+:::warning[Full erase removes both firmware banks]
+The M1's STM32 has two flash banks. A full chip erase removes both copies before the selected recovery image is written. Device settings stored in internal flash may return to defaults.
+:::
+
+## If CubeProgrammer cannot connect {#cannot-connect}
+
+- Confirm that the M1 is powered from USB-C.
+- Confirm that the ST-Link and M1 share a solid ground.
+- Check that **SWCLK and SWDIO are not swapped**.
+- Make sure you used the 10-pin group labeled **9–18**, not the 8-pin group labeled 1–8.
+- Shorten the wires and reduce the SWD frequency in CubeProgrammer.
+- Disconnect both devices, reconnect the wiring, power the M1, and reconnect the ST-Link.
+
+The external connector does not expose the STM32 reset signal. Do not open the enclosure or modify option bytes to follow an unrelated “connect under reset” guide. Contact MonstaTek support if normal SWD connection still fails.
+
+## After recovery {#after-recovery}
+
+The M1 should restart on the restored STM32 firmware. Confirm that the screen, buttons, microSD card, and firmware version work normally. This procedure does not replace the separate ESP32-C6 firmware.
+
+If recovery fails, email [support@monstatek.com](mailto:support@monstatek.com) with the firmware filename, CubeProgrammer log, ST-Link model, and a description of the M1's behavior.

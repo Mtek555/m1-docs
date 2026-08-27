@@ -1,0 +1,12 @@
+node_modules/
+build/
+.docusaurus/
+.cache-loader/
+
+# Local environment and logs
+.env
+.env.local
+*.log
+
+# macOS
+.DS_Store

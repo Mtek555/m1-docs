@@ -6,7 +6,13 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Start here",
       collapsed: false,
-      items: ["getting-started", "charging", "features-overview", "updating-firmware"],
+      items: [
+        "getting-started",
+        "charging",
+        "features-overview",
+        "updating-firmware",
+        "recover-unresponsive-m1",
+      ],
     },
     {
       type: "category",
