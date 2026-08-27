@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="1600" viewBox="0 0 420 1600">
+  <style>
+    .num { font: 700 29px system-ui, -apple-system, sans-serif; fill: #f7f4ef; text-anchor: middle; dominant-baseline: middle; }
+    .label { font: 650 30px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #f7f4ef; dominant-baseline: middle; }
+    .endlabel { font: 750 29px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #f7f4ef; dominant-baseline: middle; }
+  </style>
+
+  <rect width="420" height="1600" fill="#211a17"/>
+
+  <!-- 8-pin group -->
+  <path d="M105 80 V570" stroke="#8c817a" stroke-width="5"/>
+
+  <rect x="22" y="46" width="356" height="68" rx="8" fill="none" stroke="#f7f4ef" stroke-width="5"/>
+  <rect x="31" y="55" width="54" height="50" rx="5" fill="#f7f4ef"/>
+  <text x="58" y="81" class="num" fill="#211a17" style="fill:#211a17">1</text>
+  <rect x="94" y="69" width="23" height="23" fill="#f7f4ef"/>
+  <text x="145" y="81" class="endlabel">+5V</text>
+
+  <text x="58" y="150" class="num">2</text><rect x="94" y="138" width="23" height="23" fill="#f7f4ef"/><text x="145" y="150" class="label">PE2</text>
+  <text x="58" y="220" class="num">3</text><rect x="94" y="208" width="23" height="23" fill="#f7f4ef"/><text x="145" y="220" class="label">PE4</text>
+  <text x="58" y="290" class="num">4</text><rect x="94" y="278" width="23" height="23" fill="#f7f4ef"/><text x="145" y="290" class="label">PE5</text>
+  <text x="58" y="360" class="num">5</text><rect x="94" y="348" width="23" height="23" fill="#f7f4ef"/><text x="145" y="360" class="label">PE6</text>
+  <text x="58" y="430" class="num">6</text><rect x="94" y="418" width="23" height="23" fill="#f7f4ef"/><text x="145" y="430" class="label">PD12</text>
+  <text x="58" y="500" class="num">7</text><rect x="94" y="488" width="23" height="23" fill="#f7f4ef"/><text x="145" y="500" class="label">PD13</text>
+
+  <rect x="22" y="536" width="356" height="68" rx="8" fill="none" stroke="#f7f4ef" stroke-width="5"/>
+  <rect x="31" y="545" width="54" height="50" rx="5" fill="#f7f4ef"/>
+  <text x="58" y="571" class="num" fill="#211a17" style="fill:#211a17">8</text>
+  <rect x="94" y="559" width="23" height="23" fill="#f7f4ef"/>
+  <text x="145" y="571" class="endlabel">GND</text>
+
+  <!-- 10-pin group -->
+  <path d="M105 830 V1460" stroke="#8c817a" stroke-width="5"/>
+
+  <rect x="22" y="796" width="356" height="68" rx="8" fill="none" stroke="#f7f4ef" stroke-width="5"/>
+  <rect x="31" y="805" width="54" height="50" rx="5" fill="#f7f4ef"/>
+  <text x="58" y="831" class="num" fill="#211a17" style="fill:#211a17">9</text>
+  <rect x="94" y="819" width="23" height="23" fill="#f7f4ef"/>
+  <text x="145" y="831" class="endlabel">+3.3V</text>
+
+  <text x="58" y="900" class="num">10</text><rect x="94" y="888" width="23" height="23" fill="#f7f4ef"/><text x="145" y="900" class="label">PA14</text>
+  <text x="58" y="970" class="num">11</text><rect x="94" y="958" width="23" height="23" fill="#f7f4ef"/><text x="145" y="970" class="label">PA13</text>
+  <text x="58" y="1040" class="num">12</text><rect x="94" y="1028" width="23" height="23" fill="#f7f4ef"/><text x="145" y="1040" class="label">PA9</text>
+  <text x="58" y="1110" class="num">13</text><rect x="94" y="1098" width="23" height="23" fill="#f7f4ef"/><text x="145" y="1110" class="label">PA10</text>
+  <text x="58" y="1180" class="num">14</text><rect x="94" y="1168" width="23" height="23" fill="#f7f4ef"/><text x="145" y="1180" class="label">PC2</text>
+  <text x="58" y="1250" class="num">15</text><rect x="94" y="1238" width="23" height="23" fill="#f7f4ef"/><text x="145" y="1250" class="label">PC3</text>
+  <text x="58" y="1320" class="num">16</text><rect x="94" y="1308" width="23" height="23" fill="#f7f4ef"/><text x="145" y="1320" class="label">PD0</text>
+  <text x="58" y="1390" class="num">17</text><rect x="94" y="1378" width="23" height="23" fill="#f7f4ef"/><text x="145" y="1390" class="label">PD1</text>
+
+  <rect x="22" y="1426" width="356" height="68" rx="8" fill="none" stroke="#f7f4ef" stroke-width="5"/>
+  <rect x="31" y="1435" width="54" height="50" rx="5" fill="#f7f4ef"/>
+  <text x="58" y="1461" class="num" fill="#211a17" style="fill:#211a17">18</text>
+  <rect x="94" y="1449" width="23" height="23" fill="#f7f4ef"/>
+  <text x="145" y="1461" class="endlabel">GND</text>
+</svg>

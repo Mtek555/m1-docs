@@ -8,7 +8,7 @@ const categories = [
   { icon: "↗", title: "Start here", text: "Power on, learn the controls, understand the feature set, and update safely.", href: "/docs/getting-started" },
   { icon: "▦", title: "Device and storage", text: "Hardware specifications, removable storage, USB behavior, and settings.", href: "/docs/hardware-specifications" },
   { icon: "⌁", title: "Radio tools", text: "Sub-GHz, NFC, RFID, infrared, Wi-Fi, and Bluetooth workflows.", href: "/docs/sub-ghz" },
-  { icon: "⌘", title: "Hardware expansion", text: "GPIO headers, logic behavior, external rails, and electrical safety.", href: "/docs/gpio" },
+  { icon: "↻", title: "Recovery", text: "Restore an unresponsive M1 with forced-reboot and SWD recovery procedures.", href: "/docs/recover-unresponsive-m1" },
 ];
 
 export default function Home(): ReactNode {
@@ -20,7 +20,7 @@ export default function Home(): ReactNode {
             <div className={styles.heroCopy}>
               <p className={styles.eyebrow}>OFFICIAL USER DOCUMENTATION</p>
               <Heading as="h1">Master your <span>MonstaTek M1</span></Heading>
-              <p>Field guides for setup, radio tools, storage, hardware expansion, and device maintenance.</p>
+              <p>Field guides for setup, radio tools, storage, firmware recovery, and device maintenance.</p>
               <div className={styles.actions}>
                 <Link className="button button--primary" to="/docs/getting-started">Start with the M1 →</Link>
                 <Link className="button button--secondary" href="https://update.monstatek.com">Update firmware ↗</Link>
