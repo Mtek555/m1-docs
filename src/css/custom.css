@@ -135,4 +135,5 @@
 .guideLede { max-width: 720px; margin: -14px 0 36px; color: var(--ifm-color-content-secondary); font-size: 1.12rem; line-height: 1.65; }
 .guideHtml > :first-child { margin-top: 0; }
 .guideHtml > :last-child { margin-bottom: 0; }
+.m1DeviceImage { display: block; width: min(100%, 760px); height: auto; margin: 2rem 0 0; }
 .footer { border-top: 1px solid #2A2B2F; }
