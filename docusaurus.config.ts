@@ -44,7 +44,7 @@ const config: Config = {
     colorMode: { defaultMode: "light", disableSwitch: false, respectPrefersColorScheme: true },
     navbar: {
       title: "MonstaTek M1 Field Guide",
-      logo: { alt: "MonstaTek M1", src: "img/monstatek-logo.jpg" },
+      logo: { alt: "MonstaTek M1", src: "img/monstatek-logo-transparent.png" },
       items: [
         { to: "/docs/getting-started", label: "Guides", position: "left" },
         { to: "/docs/hardware-specifications", label: "Specifications", position: "left" },

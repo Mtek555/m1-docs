@@ -10,3 +10,9 @@ build/
 
 # macOS
 .DS_Store
+._*
+
+# Windows and editor metadata
+Thumbs.db
+*.swp
+*.swo
