@@ -1,53 +1,52 @@
 ---
 id: wi-fi
-title: Wi-Fi
-description: Scan nearby 2.4 GHz access points and review network information.
+title: "Wi-Fi"
+description: "Find nearby networks and devices, capture Wi-Fi activity, test connections, and check channel use."
 sidebar_position: 11
 slug: /wi-fi
 ---
 
-<div className="guideMeta">Field Guide 11 · 4 min read</div>
+import GuideHtml from '@site/src/components/GuideHtml';
 
-:::warning
-For legal and authorized use only. Only test devices you own or have explicit permission to access.
-:::
+<div className="guideMeta">Field Guide 11 · 32 min read</div>
 
-## Wi-Fi features {#wifi-scope}
+<p className="guideLede">Find nearby networks and devices, capture Wi-Fi activity, test connections, and check channel use.</p>
 
-The Wi-Fi menu scans nearby 2.4 GHz access points and displays network information.
+## Before you start {#before}
 
-## Scan for networks {#scan-networks}
+<GuideHtml html={"<p>Wi-Fi includes tools for viewing nearby networks, checking channel activity, capturing diagnostic data, and running focused network tests.</p><p>Exit Bluetooth before opening Wi-Fi. Insert a writable card for saved networks, handshakes, beacon lists, or PCAPNG captures.</p>"} />
 
-1. Open **Wi-Fi > Scan AP**.
-2. Wait while the M1 shows **Initializing...** and **Scanning AP...**.
-3. Review the list of nearby 2.4 GHz access points.
-4. Use the on-screen controls to move through results, then press **Back** to exit.
+## Networks {#networks}
 
-:::tip[No card required]
-Wi-Fi scanning does not require a microSD card.
-:::
+<GuideHtml html={"<p>Networks scans nearby 2.4 GHz access points and lets you review, save, and inspect their associated devices.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Wi-Fi → Networks</div><ol><li>Wait for the AP scan or cached list.</li><li>Use Left and Right to move through the network results; use Rescan for a fresh result.</li><li>Press Center on Actions.</li><li>Choose Scan for Devices to look for associated stations.</li><li>Choose Save Network to add or update SSID, BSSID, channel, RSSI, and security.</li><li>Choose Network Details for the full AP summary.</li><li>Choose Saved Networks to inspect the SD list.</li><li>In Saved Networks, choose Actions → Delete and confirm the intended entry.</li></ol><div class=\"callout note\"><strong>Saved network</strong><p>The saved entry includes the network name, address, channel, signal strength, and security type. It does not include the password.</p></div>"} />
 
-## Understand the fields {#network-fields}
+## Deauth Client {#deauth}
 
-| Field | Meaning |
-| --- | --- |
-| SSID | Network name. A hidden network may appear without a name. |
-| BSSID | Access point hardware address. |
-| RSSI | Received signal strength in dBm. A value closer to zero is stronger. |
-| Auth Mode | Security mode reported by the access point. |
+<GuideHtml html={"<p>Deauth Client performs a short disconnect test against a selected device.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Wi-Fi → Deauth Client</div><ol><li>Choose Use Selected when the correct AP is already selected, or Scan Networks.</li><li>Open the selected AP’s Actions.</li><li>Choose Target Devices, or Details to verify the AP first.</li><li>Select the exact station and review Device Details.</li><li>Verify network and device on the confirmation screen.</li><li>Choose Start and keep the test brief.</li><li>Press Center or Back to stop.</li><li>Use Change Device, Change Network, or Rescan before another test.</li></ol><div class=\"callout note\"><strong>Short connection test</strong><p>Deauth Client briefly disconnects the selected device from its network. Use it for authorized testing and stop when you have the result you need.</p></div>"} />
 
-## Troubleshooting {#wifi-troubleshooting}
+## MonstaShark {#monstashark}
 
-| Message or problem | What to try |
-| --- | --- |
-| ESP32 not ready! | Exit the Wi-Fi menu and re-enter it to restart initialization. |
-| Failed. Let retry! | Wait several seconds and scan again. |
-| No networks found | Confirm nearby networks use 2.4 GHz and move away from heavy shielding. |
-| Inconsistent results | Restart the M1 and confirm the wireless firmware matches the official release instructions. |
+<GuideHtml html={"<p>MonstaShark records Wi-Fi traffic on a selected channel as a PCAPNG file for later analysis.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Wi-Fi → MonstaShark</div><ol><li>Select an AP; use Rescan for fresh results.</li><li>Verify SSID and fixed channel.</li><li>Use Up or Down for capture duration.</li><li>Press Center on Run.</li><li>Watch packet, byte, drop, and storage counters on both result pages.</li><li>Press Center or Back to stop cleanly.</li><li>Review the saved PCAPNG filename under wifi/.</li><li>Transfer the capture through USB Drive and open it in Wireshark for review.</li></ol><div class=\"callout note\"><strong>Manual mode</strong><p>When no AP is found, Left/Right changes channel and Up/Down changes duration; confirm the channel independently before Run.</p></div>"} />
 
-:::warning[Authorized use]
-Scanning displays information broadcast by nearby access points. Do not connect to, interfere with, or test networks without authorization.
-:::
+## Handshake {#handshake}
+
+<GuideHtml html={"<p>Handshake captures WPA authentication traffic from a selected network and saves complete or partial results for analysis.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Wi-Fi → Handshake</div><ol><li>Choose Use Selected or Scan Networks.</li><li>Select the AP and verify channel.</li><li>Choose Start Capture.</li><li>Watch stages and packet count.</li><li>Press Center or Back to stop when needed.</li><li>For a complete result, choose Save Capture and name it.</li><li>For an incomplete result, deliberately choose Save Capture, Retry, or Back.</li><li>At Capture Stopped, choose Save Capture or Discard.</li></ol><p>Saved captures are stored under <code>wifi/</code> and can be transferred through USB Drive.</p>"} />
+
+## Beacon {#beacon}
+
+<GuideHtml html={"<p>Beacon transmits test network names over 2.4 GHz from an SD list or a name entered on the keypad.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Wi-Fi → Beacon</div><div class=\"table-wrap\"><table><thead><tr><th>Source</th><th>Instructions</th></tr></thead><tbody><tr><td>SD List</td><td>Put one SSID per line in wifi/ap_lists.txt; up to 16 non-empty entries, 32 bytes each.</td></tr><tr><td>Keypad SSID</td><td>Enter one SSID and verify it before transmission.</td></tr></tbody></table></div><ol><li>Select the source.</li><li>Review the running names and count.</li><li>Use it in a controlled test environment and stop when finished.</li><li>Press Center or Back to stop.</li><li>Wait for Stopping before leaving.</li></ol><div class=\"callout note\"><strong>Fallback</strong><p>If the SD list is empty, the M1 may use the currently selected network name. Check the running screen.</p></div>"} />
+
+## Channel Survey {#survey}
+
+<GuideHtml html={"<p>Channel Survey summarizes nearby 2.4 GHz activity by channel using access-point count and strongest signal.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Wi-Fi → Channel Survey</div><ol><li>Wait for the one-shot 2.4 GHz scan.</li><li>Read total detected APs.</li><li>Use Left and Right to move through channels 1–14.</li><li>Compare AP count and strongest RSSI.</li><li>Press Center to rescan.</li><li>Press Back to exit.</li></ol><p>Fewer APs does not automatically mean a better channel; consider signal strength, width, interference, and regulatory domain.</p>"} />
+
+## Troubleshooting {#troubleshooting}
+
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Problem</th><th>What to do</th></tr></thead><tbody><tr><td>ESP32 not ready</td><td>Leave, try bridge reset, and reopen Wi-Fi.</td></tr><tr><td>Radio busy</td><td>Leave Bluetooth completely.</td></tr><tr><td>No APs</td><td>Move closer, rescan, and confirm supported 2.4 GHz channels.</td></tr><tr><td>No devices</td><td>Rescan; the station may be idle, randomized, or unassociated.</td></tr><tr><td>Capture link failed</td><td>Retry once after leaving BLE; then verify ESP32 firmware pairing.</td></tr><tr><td>Save failed</td><td>Check mount, free space, and USB Drive ownership.</td></tr><tr><td>Handshake incomplete</td><td>Verify channel and activity; stay inside the approved window.</td></tr></tbody></table></div>"} />
+
+## Visual guide {#visuals}
+
+<GuideHtml html={"<div class=\"visual-set\"><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"Wi-Fi: Networks, Deauth Client, MonstaShark, Handshake, Beacon, Channel Survey. Networks selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/wi-fi.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>Wi-Fi</strong><span>Four rows are visible at a time. Use Up and Down to scroll through all 6 items.</span></figcaption></figure><figure class=\"workflow-figure\"><div class=\"workflow-title\">Network actions</div><div class=\"workflow-row\"><span>Scan networks</span><b aria-hidden=\"true\">→</b><span>Select AP</span><b aria-hidden=\"true\">→</b><span>Select device or channel</span><b aria-hidden=\"true\">→</b><span>Run function</span></div></figure><figure class=\"workflow-figure\"><div class=\"workflow-title\">MonstaShark</div><div class=\"workflow-row\"><span>Select AP</span><b aria-hidden=\"true\">→</b><span>Set duration</span><b aria-hidden=\"true\">→</b><span>Capture</span><b aria-hidden=\"true\">→</b><span>Save PCAPNG</span><b aria-hidden=\"true\">→</b><span>Open in Wireshark</span></div></figure></div>"} />
 
 
 ---

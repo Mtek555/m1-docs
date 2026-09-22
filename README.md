@@ -29,4 +29,4 @@ The static site is written to `build/` and can be deployed to `docs.monstatek.co
 - `src/pages/index.tsx` — documentation landing page
 - `src/css/custom.css` — MonstaTek theme overrides
 
-The content currently documents the verified v0.8.x firmware family. Update the version label and affected pages only after release behavior has been verified.
+The main guides describe the current M1 menus and behavior. Historical firmware changes belong in the dedicated Release Notes section.

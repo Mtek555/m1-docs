@@ -4,7 +4,7 @@ import type { Options, ThemeConfig } from "@docusaurus/preset-classic";
 const config: Config = {
   title: "MonstaTek M1 Field Guide",
   tagline: "Clear, accurate end-user documentation for the MonstaTek M1",
-  favicon: "img/favicon.svg",
+  favicon: "img/monstatek-logo.jpg",
   url: "https://docs.monstatek.com",
   baseUrl: "/",
   organizationName: "Monstatek",
@@ -44,7 +44,7 @@ const config: Config = {
     colorMode: { defaultMode: "light", disableSwitch: false, respectPrefersColorScheme: true },
     navbar: {
       title: "MonstaTek M1 Field Guide",
-      logo: { alt: "MonstaTek M1", src: "img/favicon.svg" },
+      logo: { alt: "MonstaTek M1", src: "img/monstatek-logo.jpg" },
       items: [
         { to: "/docs/getting-started", label: "Guides", position: "left" },
         { to: "/docs/hardware-specifications", label: "Specifications", position: "left" },

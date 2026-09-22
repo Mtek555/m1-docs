@@ -1,59 +1,36 @@
 ---
 id: updating-firmware
-title: Updating Firmware
-description: Update the STM32 and ESP32-C6 safely without mixing the two images.
+title: "Updating Firmware"
+description: "Update the M1 or ESP32 firmware, then check that everything is working."
 sidebar_position: 4
 slug: /updating-firmware
 ---
 
-<div className="guideMeta">Field Guide 04 · 6 min read</div>
+import GuideHtml from '@site/src/components/GuideHtml';
 
-## The M1 has two firmware images {#two-firmware-images}
+<div className="guideMeta">Field Guide 04 · 9 min read</div>
 
-The main STM32 processor and the ESP32-C6 wireless processor run separate firmware. Updating one does not update the other.
+<p className="guideLede">Update the M1 or ESP32 firmware, then check that everything is working.</p>
 
-:::warning[Before updating]
-Charge the battery to at least 50%, keep the microSD card inserted, and do not power off or remove the card while an update is running.
-:::
+## Choose the correct image {#choose-image}
 
-## Update the main M1 firmware {#update-main-firmware}
+<GuideHtml html={"<div class=\"callout note\"><strong>Verify the image</strong><p>Use the M1 firmware file provided by MonstaTek.</p></div><p>The M1 contains separate STM32 main firmware and ESP32-C6 wireless firmware. Each processor uses a different firmware file.</p>"} />
 
-1. Download the latest official M1 firmware release.
-2. Copy the main firmware `.bin` file to the microSD card.
-3. Open **Settings > Firmware update > Image File**.
-4. Select the `.bin` file and review the current and new version information.
-5. When the screen shows **Ready to flash!**, select **Firmware update**.
-6. Wait for the update to finish. The M1 restarts after a successful installation.
+## Prepare the M1 {#prepare}
 
-## Update messages {#update-messages}
+<GuideHtml html={"<ol><li>Back up the microSD card.</li><li>Charge the battery and connect stable USB power.</li><li>Copy the approved STM32 image to the microSD card.</li><li>Safely eject the USB drive before leaving USB Drive mode.</li><li>Exit Wi-Fi and Bluetooth before starting the update.</li></ol>"} />
 
-| Message | Meaning |
-| --- | --- |
-| Battery level < 50%! | Charge the M1 before trying again. |
-| Invalid image file! | The selected file is incompatible or has an unexpected size. |
-| CRC failed! | The file is incomplete or corrupted. Download and copy it again. |
-| Ready to flash! | The image passed validation. |
-| Update successfully! | Installation completed and the device will restart. |
+## Update the STM32 firmware {#stm32-update}
 
-## Update the ESP32-C6 firmware {#update-wireless-firmware}
+<GuideHtml html={"<ol><li>Open Settings > Firmware update > Image File.</li><li>Select the approved STM32 image.</li><li>Return to Firmware update and confirm that the image is ready.</li><li>Choose Firmware update.</li><li>Do not remove power or the microSD card while the image is checked and written.</li><li>Allow the M1 to reboot, then open Settings > About and verify the build label.</li></ol><div class=\"callout note\"><strong>Dual-bank update</strong><p>The STM32 updater uses the M1 bootloader and two flash banks. If the update fails, follow the recovery guide for the next steps.</p></div>"} />
 
-:::danger[Advanced procedure]
-Only update the wireless processor when official MonstaTek instructions require it. The wrong image or address can leave Wi-Fi and Bluetooth unavailable.
-:::
+## Update the ESP32-C6 {#esp32-update}
 
-- On-device path: **Settings > ESP32 update**.
-- The card must contain the ESP32 `.bin` file and its matching `.md5` file.
-- The default program start address shown by the documented firmware is `0x10000`.
+<GuideHtml html={"<ol><li>Use the exact ESP32 image and matching MD5 sidecar supplied by MonstaTek.</li><li>Open Settings > ESP32 update > Image File and select the image.</li><li>Use the start address listed with the ESP32 firmware.</li><li>Choose Firmware Update and keep power connected until completion.</li><li>Restart the M1 and test both Wi-Fi and Bluetooth.</li></ol><div class=\"callout warning\"><strong>Separate compatibility</strong><p>An ESP32 update can leave Wi-Fi and Bluetooth unavailable even when the main M1 firmware still boots. Use the M1 and ESP32 firmware files provided together.</p></div>"} />
 
-## Recovery {#recovery}
+## If the update is refused {#update-errors}
 
-If the M1 becomes unresponsive, hold **Back + Right** for about five seconds to force a reboot. This does not replace a firmware image that failed validation.
-
-If the M1 still does not boot, follow [Recover an Unresponsive M1](./recover-unresponsive-m1). Hardware recovery is a last resort and requires an ST-Link-compatible SWD programmer.
-
-:::note[Official sources only]
-Use firmware from the MonstaTek GitHub releases page or the official update page. Do not use third-party firmware for a support recovery.
-:::
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Message or symptom</th><th>Check</th></tr></thead><tbody><tr><td>File access / type error</td><td>Confirm the card is mounted and the selected file is the correct image type.</td></tr><tr><td>Image size invalid</td><td>Download the firmware file again. Do not substitute or rename a different file.</td></tr><tr><td>CRC or MD5 mismatch</td><td>Stop. Re-copy or re-download the release files and compare checksums.</td></tr><tr><td>Low battery</td><td>Charge the M1 before retrying.</td></tr><tr><td>No reboot</td><td>Try the forced reboot, then use recovery only if normal update cannot complete.</td></tr></tbody></table></div>"} />
 
 
 ---

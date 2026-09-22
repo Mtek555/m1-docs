@@ -1,47 +1,44 @@
 ---
 id: settings
-title: Settings
-description: Understand storage, power, firmware update, and device information menus.
+title: "Settings"
+description: "Inspect and format storage, read battery information, restart or power off, update both processors, and verify device identity."
 sidebar_position: 15
 slug: /settings
 ---
 
-<div className="guideMeta">Field Guide 15 · 5 min read</div>
+import GuideHtml from '@site/src/components/GuideHtml';
 
-## Settings menu {#settings-scope}
+<div className="guideMeta">Device guide · 22 min read</div>
 
-The Settings menu contains **Storage**, **Power**, **Firmware update**, **ESP32 update**, and **About**.
+<p className="guideLede">Inspect and format storage, read battery information, restart or power off, update both processors, and verify device identity.</p>
 
-## Storage {#storage-settings}
+## Storage {#storage}
 
-| Menu item | What it does |
-| --- | --- |
-| About SD Card | Shows label, file system, capacity, and free space. |
-| Explore SD Card | Browses files and folders. **Up / Down** moves, **Center** opens, and **Back** goes up. |
-| Mount SD Card | Returns the card to M1 application access. |
-| Unmount SD Card | Releases the card for USB mass-storage access. |
-| Format SD Card | Erases and reformats the card. All data is lost. |
+<GuideHtml html={"<div class=\"function-block\"><h3>About SD Card</h3><p>About SD Card displays the card’s filesystem, capacity, free space, and mount status.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Settings → Storage → About SD Card</div><ol><li>Open About SD Card.</li><li>Use Left and Right through information pages when arrows appear.</li><li>Review filesystem, capacity, used/free space, and mount details shown.</li><li>Press Back.</li></ol></div><div class=\"function-block\"><h3>Format SD Card</h3><p>Format SD Card erases and prepares the microSD card for use by the M1.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Settings → Storage → Format SD Card</div><ol><li>Back up every required file.</li><li>Leave USB Drive and stop captures or updates.</li><li>Open Format SD Card and read the warning.</li><li>Continue only if you want to erase everything on the card.</li><li>Keep power connected through format and remount.</li><li>Verify with About SD Card and the file browser.</li></ol><div class=\"callout warning\"><strong>Formatting erases the card</strong><p>Credentials, captures, dictionaries, databases, and update files will be lost.</p></div></div>"} />
 
-## Power {#power-settings}
+## Power {#power}
 
-| Menu item | What it does |
-| --- | --- |
-| Battery Info | Shows battery Level, Temperature, Voltage, Health, and charging state. |
-| Reboot | Restarts the M1 after confirmation. |
-| Power Off | Shuts the M1 down after confirmation. |
+<GuideHtml html={"<div class=\"function-block\"><h3>Battery Info</h3><p>Battery Info displays the M1’s current battery measurements and charging state.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Settings → Power → Battery Info</div>Use Left and Right to move through the measurement pages. Record the displayed charge, voltage, current, temperature, health, or status fields. Back returns.</div><div class=\"function-block\"><h3>Reboot</h3><p>Reboot restarts the M1 without removing power.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Settings → Power → Reboot</div><ol><li>Stop radio, storage, bridge, capture, and update operations.</li><li>Choose Reboot and confirm.</li><li>Wait for the home screen, then try the feature again.</li></ol></div><div class=\"function-block\"><h3>Power Off</h3><p>Power Off shuts the M1 down after active work has been stopped.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Settings → Power → Power Off</div><ol><li>Stop writes and safely eject USB Drive.</li><li>Choose Power Off and confirm.</li><li>Wait for screen and indicators to turn off.</li><li>Use the documented power-on control to restart.</li></ol></div>"} />
 
-## Firmware update menus {#update-settings}
+## Firmware update {#firmware}
 
-- **Firmware update:** selects and validates the main firmware `.bin`; installation requires at least 50% battery.
-- **ESP32 update:** uses an ESP32 `.bin`, matching `.md5`, and program start address. The documented default is `0x10000`.
+<GuideHtml html={"<div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Settings → Firmware update</div><div class=\"function-block\"><h3>Image File</h3><p>Image File selects the STM32 firmware image that the M1 will install.</p><ol><li>Copy the approved STM32 image to its release-specified location.</li><li>Choose Image File, browse to the exact artifact, and press Center.</li><li>Verify the selected filename on return.</li></ol></div><div class=\"function-block\"><h3>Firmware update</h3><p>Firmware update validates and installs the selected STM32 image.</p><ol><li>Charge and connect stable USB power.</li><li>Choose Firmware update after verifying the image.</li><li>Do not remove power or card during validation, erase, write, or reboot.</li><li>After restart, verify Settings → About.</li></ol></div><div class=\"callout warning\"><strong>Matched release only</strong><p>Filename or build number alone does not prove hardware or regional compatibility. Verify the published checksum.</p></div>"} />
 
-:::danger[Use official instructions]
-Do not update the ESP32-C6 independently unless the official main-firmware release instructs you to do so.
-:::
+## ESP32 update {#esp32}
+
+<GuideHtml html={"<div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Settings → ESP32 update</div><div class=\"function-block\"><h3>Image File</h3><p>Image File selects the ESP32-C6 firmware image used by the wireless processor.</p>Select the exact ESP32-C6 image supplied with the release, never the STM32 image.</div><div class=\"function-block\"><h3>Start Address</h3><p>Start Address sets the flash location specified for the selected ESP32-C6 image.</p>Use Left and Right for the release-specified address. Do not guess from another product or build.</div><div class=\"function-block\"><h3>Firmware Update</h3><p>Firmware Update writes the selected image to the ESP32-C6 at the configured address.</p><ol><li>Confirm image, matching checksum/sidecar, and start address.</li><li>Connect stable power and leave Wi-Fi/Bluetooth.</li><li>Choose Firmware Update.</li><li>Keep power connected until completion.</li><li>Reboot and test Wi-Fi and Bluetooth.</li></ol></div><div class=\"callout warning\"><strong>Two processors</strong><p>STM32 and ESP32-C6 images are different. Updating one does not repair an incompatible image on the other.</p></div>"} />
 
 ## About {#about}
 
-Use **Left / Right** to move through firmware version and active storage-bank information, manufacturer information, and the device graphic. Press **Back** to exit.
+<GuideHtml html={"<p>About displays the M1 model, firmware version, build information, and identifiers used for support.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Settings → About</div><ol><li>Open About.</li><li>Use Left and Right on Prev. and Next.</li><li>Record model, firmware/build label, and identifiers needed for support.</li><li>Press Back.</li></ol><p>For support, include screen name, build label, last action, storage state, and whether Wi-Fi, Bluetooth, USB Drive, or external hardware was active.</p>"} />
+
+## Troubleshooting {#troubleshooting}
+
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Problem</th><th>What to do</th></tr></thead><tbody><tr><td>SD info unavailable</td><td>Reinsert card, leave USB Drive, and reboot before formatting.</td></tr><tr><td>Format failed</td><td>Use stable power and a supported card; back up before computer repair.</td></tr><tr><td>Image refused</td><td>Verify the file type, size, checksum, and battery level.</td></tr><tr><td>ESP32 update fails</td><td>Verify image/address pair and retry only with the approved release set.</td></tr><tr><td>No reboot</td><td>Use the recovery guide; do not alter option bytes from unrelated instructions.</td></tr></tbody></table></div>"} />
+
+## Visual guide {#visuals}
+
+<GuideHtml html={"<div class=\"visual-set\"><figure class=\"guide-figure\"><div class=\"figure-art\"><img src=\"/assets/line-art/11-screen-frame.svg\" alt=\"M1 display area\" loading=\"lazy\"></div><figcaption><strong>M1 display area</strong><span>Settings pages use Left and Right when more information is available.</span></figcaption></figure><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"Settings: Storage, Power, Firmware update, ESP32 update, About. Storage selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/settings.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>Settings</strong><span>Four rows are visible at a time. Use Up and Down to scroll through all 5 items.</span></figcaption></figure><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"Storage: About SD Card, Format SD Card. About SD Card selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/storage.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>Storage</strong><span>Use Up and Down to move the highlight. Center opens the selected item.</span></figcaption></figure><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"Power: Battery Info, Reboot, Power Off. Battery Info selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/power.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>Power</strong><span>Use Up and Down to move the highlight. Center opens the selected item.</span></figcaption></figure><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"Firmware update: Image File, Firmware update. Image File selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/firmware-update.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>Firmware update</strong><span>Use Up and Down to move the highlight. Center opens the selected item.</span></figcaption></figure><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"ESP32 update: Image File, Start Address, Firmware Update. Image File selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/esp32-update.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>ESP32 update</strong><span>Use Up and Down to move the highlight. Center opens the selected item.</span></figcaption></figure><figure class=\"workflow-figure\"><div class=\"workflow-title\">Firmware update</div><div class=\"workflow-row\"><span>Select image</span><b aria-hidden=\"true\">→</b><span>Start update</span><b aria-hidden=\"true\">→</b><span>Wait for restart</span><b aria-hidden=\"true\">→</b><span>Verify About</span></div></figure></div>"} />
 
 
 ---

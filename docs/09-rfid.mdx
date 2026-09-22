@@ -1,64 +1,17 @@
 ---
 id: rfid
-title: RFID (125 kHz)
-description: Read, save, emulate, and write supported low-frequency identifiers.
+title: "RFID"
+description: "Read, save, emulate, write, edit, and create supported LF RFID credentials, including FDX-B animal tags."
 sidebar_position: 9
 slug: /rfid
+hide_title: true
 ---
 
-<div className="guideMeta">Field Guide 09 · 6 min read</div>
+import GuideHtml from '@site/src/components/GuideHtml';
 
-:::warning
-For legal and authorized use only. Only test devices you own or have explicit permission to access.
-:::
+<div className="guideMeta">Field Guide 09 · 18 min read</div>
 
-## Documented formats {#rfid-formats}
-
-:::warning[Before you start]
-A microSD card is required for saving and for the **Saved** library. Use RFID functions only on equipment you own or have explicit permission to test.
-:::
-
-| Format | Notes |
-| --- | --- |
-| EM4100 Full / 32-bit / 16-bit | ID-based LF RFID formats used by many older tags and regional systems. |
-| H10301 (HID Prox) | Common 26-bit format using a Facility Code and Card Number. |
-
-## RFID menu {#rfid-menu}
-
-| Menu item | What it does |
-| --- | --- |
-| Read | Scans a supported 125 kHz tag. |
-| Saved | Opens and manages saved `.rfid` files. |
-| Add | Enters a known supported identifier manually. |
-| Utilities | Opens additional LF RFID utilities available in the installed firmware. |
-
-## Read a tag {#read-tag}
-
-1. Open **RFID > Read**.
-2. Hold the tag flat against the round LF antenna area near the upper center of the rear casing.
-3. Keep the tag still until the M1 beeps and displays the result.
-4. Choose the supported **Save**, **Emulate**, or **Write** action.
-
-## Save, emulate, or write {#rfid-actions}
-
-| Action | What it does |
-| --- | --- |
-| Save | Stores the tag as an `.rfid` file. |
-| Emulate | Makes the M1 present the supported identifier to a reader. |
-| Write | Copies supported data to a compatible rewritable LF tag such as T5577. |
-
-:::danger[Writing tags]
-Standard EM4100 tags are normally read-only. Use a compatible rewritable tag and keep it motionless while the M1 writes and verifies the result.
-:::
-
-## Troubleshooting {#rfid-troubleshooting}
-
-| Problem | What to try |
-| --- | --- |
-| Tag is not detected | Hold it flat, rotate it 90 degrees, move away from metal, and confirm it is 125 kHz rather than NFC. |
-| Write fails | Confirm the destination is a compatible rewritable LF tag and keep it still. |
-| Saved library will not open | Insert and mount a readable microSD card. |
-
+<GuideHtml html={"\n  <header class=\"manual-hero\">\n    <div class=\"manual-hero-copy\">\n      <nav class=\"breadcrumbs\"><a href=\"/\" data-nav>Home</a><span>/</span><span>RFID</span></nav>\n      <span class=\"manual-kicker\">125 kHz RFID · Field Guide 09</span>\n      <h1>RFID</h1>\n      <p>Use the M1 to read supported low-frequency cards and fobs, save credentials for later use, emulate saved credentials, or write to compatible cards.</p>\n      <div class=\"manual-facts\"><span><strong>4</strong> menu tools</span><span><strong>14</strong> supported protocols</span><span><strong>134.2</strong> kHz FDX-B mode</span></div>\n    </div>\n    <div class=\"manual-hero-device\">\n      <div class=\"manual-device\" role=\"img\" aria-label=\"M1 screen: RFID menu with Read selected\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/rfid.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div>\n      <span class=\"manual-figure-label\">Actual M1 menu</span>\n    </div>\n  </header>\n\n  <section class=\"manual-section manual-intro\" id=\"overview\">\n    <div class=\"manual-section-head\"><span>01 · Overview</span><h2>RFID at a glance</h2><p>Low-frequency RFID credentials transmit a short identifier when they enter a reader’s magnetic field. After reading a credential, the M1 lets you save, emulate, write, or inspect it.</p></div>\n    <div class=\"manual-capabilities\">\n      <article class=\"manual-action-card\"><h3>Read</h3><p>Identify a supported card or fob and display its decoded data.</p><span>Main Menu → RFID → Read</span></article>\n      <article class=\"manual-action-card\"><h3>Saved</h3><p>Open stored records to emulate, write, edit, rename, delete, or inspect them.</p><span>Main Menu → RFID → Saved</span></article>\n      <article class=\"manual-action-card\"><h3>Add</h3><p>Create a record by choosing its protocol and entering the exact bytes.</p><span>Main Menu → RFID → Add</span></article>\n      <article class=\"manual-action-card\"><h3>Utilities</h3><p>Read ISO FDX-B animal identification tags at 134.2 kHz.</p><span>Main Menu → RFID → Utilities</span></article>\n    </div>\n  </section>\n\n  <section class=\"manual-section\" id=\"read\">\n    <div class=\"manual-section-head\"><span>02 · Core task</span><h2>Read and save a credential</h2><p>Start with one card or fob. Keep other RFID credentials away from the M1 while it reads.</p></div>\n    <div class=\"manual-path\"><span>On M1</span><strong>Main Menu → RFID → Read</strong></div>\n    <figure class=\"placement-diagram\">\n      <div class=\"placement-copy\"><span class=\"diagram-question\">Where should I hold it?</span><h3>Start at the center of the rear panel.</h3><p>Place a flat card against the back. For a small fob, move it slowly across the highlighted area and rotate it if the M1 does not detect it.</p><div class=\"diagram-key\"><i></i><span>Suggested starting area</span></div></div>\n      <div class=\"placement-art\"><img src=\"/assets/manual/m1-rear.svg\" alt=\"Rear view of the M1\"><span class=\"rfid-field field-one\"></span><span class=\"rfid-field field-two\"></span><b>RFID</b></div>\n    </figure>\n    <div class=\"manual-steps\">\n      <article class=\"manual-step\"><div class=\"manual-step-copy\"><span class=\"step-number\">1</span><h3>Open Read</h3><p>Select Read. The M1 starts listening immediately; no separate Start command is required.</p></div><div class=\"manual-device\" role=\"img\" aria-label=\"M1 screen: RFID menu with Read selected\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/rfid.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div></article>\n      <article class=\"manual-step\"><div class=\"manual-step-copy\"><span class=\"step-number\">2</span><h3>Hold the credential in place</h3><p>Keep it still while the reading animation is on screen. A tone confirms detection.</p></div><div class=\"manual-device\" role=\"img\" aria-label=\"M1 screen: RFID reading screen\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/rfid-read.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div></article>\n      <article class=\"manual-step\"><div class=\"manual-step-copy\"><span class=\"step-number\">3</span><h3>Review the result</h3><p>Check the protocol and decoded identifier. The values below are an example; your credential will be different.</p></div><div class=\"manual-device\" role=\"img\" aria-label=\"M1 screen: Example RFID result showing HID H10301 data\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/rfid-result.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div></article>\n      <article class=\"manual-step\"><div class=\"manual-step-copy\"><span class=\"step-number\">4</span><h3>Save, emulate, or write</h3><p>Press Right for More. Choose Save to keep a file, Emulate to send the credential to a reader, or Write for compatible writable media.</p></div><div class=\"manual-device\" role=\"img\" aria-label=\"M1 screen: RFID result action menu\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/rfid-more.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div></article>\n    </div>\n    <div class=\"manual-note\"><strong>To save</strong><p>Select <b>Save</b>, enter a recognizable filename, and confirm. The M1 stores the record in <code>rfid/</code> on the microSD card.</p></div>\n  </section>\n\n  <section class=\"manual-section\" id=\"saved\">\n    <div class=\"manual-section-head\"><span>03 · Saved records</span><h2>Use a saved credential</h2><p>Saved opens RFID records from the microSD card. Select a file, then choose the action that matches your task.</p></div>\n    <div class=\"manual-path\"><span>On M1</span><strong>Main Menu → RFID → Saved</strong></div>\n    <div class=\"manual-action-grid\">\n      <article class=\"manual-action-card\"><h3>Emulate</h3><p>Present the saved credential to a reader. Hold the M1 in place; press Back to stop.</p></article>\n      <article class=\"manual-action-card\"><h3>Write</h3><p>Copy the record to compatible writable media. Keep the tag aligned until the result appears.</p></article>\n      <article class=\"manual-action-card\"><h3>Edit</h3><p>Replace the credential bytes. The entry must match the exact length required by its protocol.</p></article>\n      <article class=\"manual-action-card\"><h3>Rename</h3><p>Give the file a new recognizable name. It remains in the rfid folder.</p></article>\n      <article class=\"manual-action-card\"><h3>Delete</h3><p>Remove the selected file after confirming the filename.</p></article>\n      <article class=\"manual-action-card\"><h3>Info</h3><p>Review the protocol and stored fields without transmitting.</p></article>\n    </div>\n  </section>\n\n  <section class=\"manual-section manual-split\" id=\"add\">\n    <div class=\"manual-section-head\"><span>04 · Create a record</span><h2>Add RFID data manually</h2><p>Use Add when you already know the credential data. Choose the protocol first, then enter exactly the number of hexadecimal bytes that protocol expects.</p><div class=\"manual-path\"><span>On M1</span><strong>Main Menu → RFID → Add</strong></div></div>\n    <div class=\"manual-procedure\"><ol><li><b>Select the protocol.</b><span>Choose the exact protocol named by the source system.</span></li><li><b>Enter the bytes.</b><span>Use hexadecimal characters 0–9 and A–F. The M1 rejects missing, extra, or invalid bytes.</span></li><li><b>Review the result.</b><span>The standard result screen opens with Save, Emulate, and Write. A manually added record is not saved automatically.</span></li><li><b>Save and verify.</b><span>Name the file, then open Saved → Info to confirm the protocol and value.</span></li></ol></div>\n  </section>\n\n  <section class=\"manual-section manual-pet\" id=\"fdxb\">\n    <div class=\"pet-art\"><img src=\"/assets/manual/m1-three-quarter.svg\" alt=\"Three-quarter view of the M1\"><span>134.2 kHz</span></div>\n    <div class=\"pet-copy\"><span class=\"manual-kicker\">Utilities</span><h2>Read an FDX-B animal tag</h2><p>This mode tunes the M1 for ISO FDX-B animal identification tags. It displays the decoded country or manufacturer code and national identification number.</p><div class=\"manual-path\"><span>On M1</span><strong>Main Menu → RFID → Utilities → FDX-B (134.2 kHz)</strong></div><ol><li>Move the M1 slowly over the likely tag location.</li><li>Pause when the M1 starts detecting the tag.</li><li>Hold position until the identification data appears.</li><li>Press Right for the available Save, Emulate, or Write actions, or Back to finish.</li></ol><div class=\"manual-note compact\"><strong>If nothing appears</strong><p>Try a different angle and scan the area again. Tag orientation, depth, and position all affect detection.</p></div></div>\n  </section>\n\n  <section class=\"manual-section\" id=\"technical\">\n    <div class=\"manual-section-head\"><span>05 · Reference</span><h2>Protocols and troubleshooting</h2><p>Normal Read listens at 125 kHz across the supported protocol set. FDX-B uses its dedicated 134.2 kHz utility.</p></div>\n    <div class=\"manual-reference-grid\"><div><h3>Supported formats</h3><p class=\"protocol-list\">EM4100 · EM4100/32 · EM4100/16 · HID H10301 · Pyramid · Kantech IoProxXSF · AWID · Securakey RadioKey · Jablotron · ISO FDX-B · HID Prox · HID Extended · Keri · Honeywell Nexwatch</p></div><div><h3>If a task does not complete</h3><dl><dt>Nothing detected</dt><dd>Remove other tags, move the credential across the rear panel, and try another orientation.</dd><dt>Saved is empty</dt><dd>Insert the microSD card and confirm the files are in <code>rfid/</code>.</dd><dt>Edit is rejected</dt><dd>Enter the exact byte count for the selected protocol.</dd><dt>Write fails</dt><dd>Check that the destination is compatible, writable, correctly aligned, and not locked.</dd></dl></div></div>\n  </section>"} />
 
 ---
 

@@ -32,6 +32,12 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: ["gpio"],
     },
+    {
+      type: "category",
+      label: "Release notes",
+      collapsed: true,
+      items: ["whats-new"],
+    },
   ],
 };
 

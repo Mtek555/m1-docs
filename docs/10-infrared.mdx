@@ -1,64 +1,44 @@
 ---
 id: infrared
-title: Infrared
-description: Learn, save, replay, and transmit supported remote-control commands.
+title: "Infrared"
+description: "Send universal commands, learn buttons from your original remote, replay a saved signal, or choose an external transmitter."
 sidebar_position: 10
 slug: /infrared
 ---
 
-<div className="guideMeta">Field Guide 10 · 6 min read</div>
+import GuideHtml from '@site/src/components/GuideHtml';
 
-:::warning
-For legal and authorized use only. Only test devices you own or have explicit permission to access.
-:::
+<div className="guideMeta">Field Guide 10 · 18 min read</div>
 
-## Infrared menu {#infrared-menu}
+<p className="guideLede">Send universal commands, learn buttons from your original remote, replay a saved signal, or choose an external transmitter.</p>
 
-| Menu item | What it does |
-| --- | --- |
-| Universal Remotes | Tries database codes for TVs, audio players, projectors, and air conditioners. |
-| Learn | Captures a button from an existing remote. |
-| Replay | Opens and transmits saved remote data. |
+## Before you start {#before}
 
-## Learn a remote button {#learn-command}
+<GuideHtml html={"<div class=\"callout warning\"><strong>Use with permission</strong><p>Use the M1 with devices you own or have permission to operate. Don’t point an IR transmitter at anyone’s eyes or sensitive optical equipment.</p></div><p>Infrared requires line of sight. Point the M1 transmitter toward the device’s IR receiver.</p>"} />
 
-1. Open **Infrared > Learn**.
-2. Point the remote at the M1 receiver from approximately **5 to 50 cm** away.
-3. Press and hold the remote button for about one second.
-4. When recognized, review **Protocol**, **Address**, and **Command** on screen.
+## Universal Remotes {#universal}
 
-| Documented learn protocol | Common examples |
-| --- | --- |
-| NEC | LG, Onkyo, Apple, and others |
-| SIRCS | Sony |
-| Samsung | Samsung televisions and related devices |
-| Kaseikyo | Panasonic, JVC, and related devices |
+<GuideHtml html={"<p>Universal Remotes uses the installed infrared database for common devices.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Infrared → Universal Remotes</div><div class=\"function-block\"><h3>TV remotes</h3><p>TV Remotes gives you common controls for power, sound, and channels.</p>Select each displayed Power, Mute, Volume, or Channel command, aim at the television, and press Center. Keep the M1 aimed at the TV while it tries compatible codes. Press Back to stop.</div><div class=\"function-block\"><h3>Audio player remotes</h3><p>Audio Player Remotes gives you common playback and volume controls.</p>Choose the displayed Power, Play/Pause, Previous/Next, Volume, or Mute command, aim at the player, and press Center.</div><div class=\"function-block\"><h3>Projector remotes</h3><p>Projector Remotes gives you common power and volume controls.</p>Choose the displayed Power, Volume, or Mute command, aim at the projector receiver, and press Center.</div><div class=\"function-block\"><h3>AC remotes</h3><p>AC Remotes gives you common controls for power, temperature, and operating mode.</p>Choose the displayed Power, temperature, heat/cool, or dehumidifier command. Aim at the indoor unit until transmission ends, then verify the unit display.</div><div class=\"callout note\"><strong>No response</strong><p>If the device still doesn’t respond after the M1 tries every saved code, use Learn with the original remote.</p></div>"} />
 
-:::note[Learn versus transmit]
-The M1 may transmit additional variants through saved or database files. A protocol being available for transmission does not mean the **Learn** screen can decode it.
-:::
+## Learn {#learn}
 
-## Replay and Universal Remotes {#replay-universal}
+<GuideHtml html={"<p>Learn receives one command from an original infrared remote and displays the decoded values.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Infrared → Learn</div><ol><li>Aim the original remote at the M1 receiver from a short distance.</li><li>Press one remote button briefly.</li><li>Keep alignment until protocol, address, and command appear.</li><li>If nothing appears, move closer and try a fresh battery.</li><li>Press Back to cancel or to exit after the M1 captures the signal.</li></ol>"} />
 
-- **Replay:** choose a saved remote and transmit its stored command.
-- **Universal Remotes:** choose a device category and try database commands until the authorized target responds.
+## Replay {#replay}
 
-:::warning[Database required]
-Universal Remotes requires the official infrared database files on the microSD card.
-:::
+<GuideHtml html={"<p>Replay transmits a learned or saved infrared command to the selected device.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Infrared → Replay</div><ol><li>After learning a command, open Replay or choose an infrared file you’ve already saved.</li><li>Review protocol, address, and command.</li><li>Point the M1 at the device you want to operate.</li><li>Press Center to transmit.</li><li>Wait for the signal to finish sending, then check whether the device responds.</li><li>Press Back to stop or return.</li></ol><div class=\"callout note\"><strong>Clear names</strong><p>Use action names such as TV_Power or Projector_Mute when organizing commands.</p></div>"} />
 
-## Troubleshooting {#ir-troubleshooting}
+## Remap Tx pin {#remap}
 
-| Problem | Likely cause | What to try |
-| --- | --- | --- |
-| Signal not recognized | Unsupported learn protocol | Try Universal Remotes or another supported remote. |
-| Inconsistent reads | Sunlight or flickering light | Move to a shaded location and aim directly at the receiver. |
-| Short transmit range | Low battery or blocked line of sight | Charge the M1 and point the top edge toward the target. |
-| Remote is too bright / overdrives | Remote is too close | Increase the learning distance by several centimeters. |
+<GuideHtml html={"<p>Remap Tx pin selects the built-in infrared transmitter or a supported external output.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Infrared → Remap Tx pin</div><ol><li>Power off and disconnect external hardware.</li><li>Connect the ground, power, and IR output lines exactly as shown.</li><li>Use Left and Right to select the displayed output.</li><li>Press Back after confirming it.</li><li>Test at a safe distance.</li></ol><div class=\"callout warning\"><strong>External driver</strong><p>Do not drive a high-current IR LED directly from an unverified GPIO. Use the documented driver and voltage domain.</p></div>"} />
 
-:::warning[Responsible use]
-Only control devices you own or are authorized to operate.
-:::
+## Troubleshooting {#troubleshooting}
+
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Problem</th><th>What to do</th></tr></thead><tbody><tr><td>Universal command fails</td><td>Let the M1 try all available codes. If none work, use Learn.</td></tr><tr><td>Learn finds nothing</td><td>Move closer, replace battery, and aim directly.</td></tr><tr><td>Fields change</td><td>Use a brief consistent press and avoid strong ambient IR.</td></tr><tr><td>Replay unreliable</td><td>Move closer and check that the transmitter is working.</td></tr><tr><td>Wrong device reacts</td><td>Stop and move other devices out of range before trying again.</td></tr></tbody></table></div>"} />
+
+## Visual guide {#visuals}
+
+<GuideHtml html={"<div class=\"visual-set\"><figure class=\"guide-figure\"><div class=\"figure-art\"><img src=\"/assets/line-art/03-left-side.svg\" alt=\"Infrared end\" loading=\"lazy\"></div><figcaption><strong>Infrared end</strong><span>Point the infrared end of the M1 toward the appliance and keep a clear line of sight.</span></figcaption></figure><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"Infrared: Universal Remotes, Learn, Replay, Remap Tx pin. Universal Remotes selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/infrared.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>Infrared</strong><span>Use Up and Down to move the highlight. Center opens the selected item.</span></figcaption></figure><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"Universal Remotes: TV remotes, Audio player remotes, Projector remotes, AC remotes. TV remotes selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/universal-remotes.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>Universal Remotes</strong><span>Use Up and Down to move the highlight. Center opens the selected item.</span></figcaption></figure><figure class=\"workflow-figure\"><div class=\"workflow-title\">Learn and replay</div><div class=\"workflow-row\"><span>Aim original remote</span><b aria-hidden=\"true\">→</b><span>Learn</span><b aria-hidden=\"true\">→</b><span>Save</span><b aria-hidden=\"true\">→</b><span>Aim M1</span><b aria-hidden=\"true\">→</b><span>Replay</span></div></figure></div>"} />
 
 
 ---

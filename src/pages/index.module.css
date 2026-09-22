@@ -18,5 +18,13 @@
 .card h3 { margin-top: 22px; }
 .card p { color: var(--ifm-color-content-secondary); font-size: 14px; line-height: 1.6; }
 .card b { position: absolute; right: 22px; bottom: 20px; color: #E8232C; font-size: 20px; }
+.overview { display: grid; grid-template-columns: .9fr 1.1fr; gap: 3.5rem; margin-top: 4rem; padding-top: 4rem; border-top: 1px solid rgba(138,141,147,.24); }
+.overview h2 { margin: .7rem 0 1rem; font-size: 2.4rem; line-height: 1.05; letter-spacing: -.04em; }
+.overview > div:first-child > p:not(.eyebrow) { color: var(--ifm-color-content-secondary); }
+.featureList { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+.featureItem { padding: 1rem; border: 1px solid rgba(138,141,147,.24); border-radius: 8px; background: var(--ifm-background-surface-color); }
+.featureItem strong, .featureItem span { display: block; }
+.featureItem span { margin-top: .25rem; color: var(--ifm-color-content-secondary); font-size: .85rem; }
 @media(max-width: 996px){.grid{grid-template-columns:1fr 1fr}.heading{align-items:flex-start;flex-direction:column}}
-@media(max-width: 600px){.hero{min-height:560px}.grid{grid-template-columns:1fr}.actions{width:100%;flex-direction:column}.card{min-height:250px}}
+@media(max-width: 996px){.overview{grid-template-columns:1fr;gap:1.5rem}}
+@media(max-width: 600px){.hero{min-height:560px}.grid,.featureList{grid-template-columns:1fr}.actions{width:100%;flex-direction:column}.card{min-height:250px}}

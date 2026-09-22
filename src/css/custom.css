@@ -1,3 +1,5 @@
+@import url("/assets/field-guide.css");
+
 :root {
   --ifm-color-primary: #E8232C;
   --ifm-color-primary-dark: #C91E26;
@@ -130,4 +132,7 @@
 .alert--secondary, .alert--success, .alert--warning, .alert--danger { --ifm-alert-background-color: #F4F5F7; --ifm-alert-border-color: #E8232C; --ifm-alert-foreground-color: #17171A; }
 [data-theme='dark'] .alert--secondary, [data-theme='dark'] .alert--success, [data-theme='dark'] .alert--warning, [data-theme='dark'] .alert--danger { --ifm-alert-background-color: #2A2B2F; --ifm-alert-foreground-color: #FFFFFF; }
 .guideMeta { margin: 20px 0 34px; color: #8A8D93; font-size: 12px; }
+.guideLede { max-width: 720px; margin: -14px 0 36px; color: var(--ifm-color-content-secondary); font-size: 1.12rem; line-height: 1.65; }
+.guideHtml > :first-child { margin-top: 0; }
+.guideHtml > :last-child { margin-bottom: 0; }
 .footer { border-top: 1px solid #2A2B2F; }

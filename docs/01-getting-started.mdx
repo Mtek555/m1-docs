@@ -1,61 +1,44 @@
 ---
 id: getting-started
-title: Getting Started
-description: Set up the M1, learn the controls, and find every main feature.
+title: "Getting Started"
+description: "Learn about the M1 controls, navigate through menus, enter text, and understand common screen labels."
 sidebar_position: 1
 slug: /getting-started
 ---
 
-<div className="guideMeta">Field Guide 01 · 4 min read</div>
+import GuideHtml from '@site/src/components/GuideHtml';
 
-## Before you begin {#before-you-begin}
+<div className="guideMeta">Field Guide 01 · 12 min read</div>
 
-Your package should contain the **MonstaTek M1**, a **USB Type-C cable**, and a **quick-start guide**.
+<p className="guideLede">Learn about the M1 controls, navigate through menus, enter text, and understand common screen labels.</p>
 
-:::tip[Recommended first setup]
-Charge the M1 before a long session. Insert a compatible microSD card if you plan to save captures, keep card libraries, or use the infrared database.
-:::
+## Before you begin {#before}
 
-## Power and controls {#power-and-controls}
+<GuideHtml html={"<p>Charge the M1 before a long session. Insert a compatible microSD card if you plan to save captures, credentials, card images, BLE records, or infrared data.</p><div class=\"callout warning\"><strong>Authorized use</strong><p>Use read, transmit, emulate, write, capture, network, USB, and GPIO functions only on equipment you own or are explicitly authorized to test.</p></div>"} />
 
-| Control | Action |
-| --- | --- |
-| Power on | Press and hold **Center** for about three seconds. |
-| Power off | Open **Settings > Power > Power Off**, then confirm. |
-| Up / Down | Move through menus and vertical lists. |
-| Center | Open the highlighted item, confirm a choice, or start the action shown on screen. |
-| Left / Right | Change values or use the action shown on the current screen. |
-| Back | Return to the previous screen or stop the current function. |
+## Physical controls {#controls}
 
-:::note[Home-screen shortcut]
-From the home screen, press **Left** to open the microSD card file browser. This shortcut is separate from normal menu navigation.
-:::
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Control</th><th>In menus</th><th>Inside a function</th></tr></thead><tbody><tr><td><span class=\"screen-key\">Up</span></td><td>Previous item.</td><td>Move through lists or change the selected value when shown.</td></tr><tr><td><span class=\"screen-key\">Down</span></td><td>Next item.</td><td>Move through lists, change a value, or use the action shown at the bottom of the screen.</td></tr><tr><td><span class=\"screen-key\">Left</span></td><td>Change a value where arrows appear.</td><td>Previous page/value, rescan, or the labeled lower-left action.</td></tr><tr><td><span class=\"screen-key\">Right</span></td><td>Change a value where arrows appear.</td><td>Next page/value, confirm, or the labeled lower-right action.</td></tr><tr><td><span class=\"screen-key\">Center</span></td><td>Open the highlighted item.</td><td>Start, stop, select, save, send, or run the labeled action.</td></tr><tr><td><span class=\"screen-key\">Back</span></td><td>Return one menu level.</td><td>Cancel, stop safely, or return to the preceding screen.</td></tr></tbody></table></div>"} />
 
 ## Main menu {#main-menu}
 
-The main-menu order is:
+<GuideHtml html={"<p>Press Center from the home screen to open the nine-item main menu.</p><div class=\"table-wrap\"><table><thead><tr><th>Order</th><th>Category</th><th>Functions</th></tr></thead><tbody><tr><td>1</td><td>Sub-GHz</td><td>Scan, Record, Replay, Frequency Reader, Remap Tx pin</td></tr><tr><td>2</td><td>RFID</td><td>Read, Saved, Add, Utilities</td></tr><tr><td>3</td><td>NFC</td><td>Read, Saved, Add, Extract Keys, Tools</td></tr><tr><td>4</td><td>Infrared</td><td>Universal Remotes, Learn, Replay, Remap Tx pin</td></tr><tr><td>5</td><td>USB</td><td>USB Drive</td></tr><tr><td>6</td><td>GPIO</td><td>GPIO Control, 3.3V power, 5V power, USB-UART bridge</td></tr><tr><td>7</td><td>Wi-Fi</td><td>Networks, Deauth Client, MonstaShark, Handshake, Beacon, Channel Survey</td></tr><tr><td>8</td><td>Bluetooth</td><td>Scan Devices, Signal Meter, GATT Explorer, Saved</td></tr><tr><td>9</td><td>Settings</td><td>Storage, Power, Firmware update, ESP32 update, About</td></tr></tbody></table></div>"} />
 
-| Order | Feature |
-| --- | --- |
-| 1 | Sub-GHz |
-| 2 | RFID (125 kHz) |
-| 3 | NFC |
-| 4 | Infrared |
-| 5 | GPIO |
-| 6 | Wi-Fi |
-| 7 | Bluetooth |
-| 8 | Settings |
+## Use the virtual keyboard {#keyboard}
 
-## Your first session {#first-session}
+<GuideHtml html={"<ol><li>Use the directional buttons to move the cursor.</li><li>Press Center to enter the highlighted character.</li><li>Use the on-screen delete control to remove the previous character.</li><li>Choose Save only after checking the complete name or hexadecimal value.</li><li>Press Back to cancel without applying the entry.</li></ol><div class=\"callout note\"><strong>Hexadecimal fields</strong><p>Keys, passwords, UIDs, and GATT values require exact byte lengths. Use only 0–9 and A–F; an odd number of characters is not a complete byte.</p></div>"} />
 
-1. Charge the M1 with a standard **5 V USB source**.
-2. Insert and mount a compatible microSD card if you need saved files.
-3. Check the official firmware release page before updating either processor.
-4. Open **Features Overview**, then use the dedicated guide for the function you want to try.
+## Use the file browser {#files}
 
-:::warning[Responsible use]
-Use radio, RFID, NFC, infrared, Wi-Fi, Bluetooth, USB, and GPIO functions only on systems and equipment you own or are authorized to test.
-:::
+<GuideHtml html={"<div class=\"menu-path\"><strong>Menu path</strong>Home → Left</div><ol><li>Press Left on the home screen.</li><li>Use Up and Down to select a folder or file.</li><li>Press Center to open it.</li><li>For a supported file, choose the available Run, Rename, or Delete action.</li><li>Check the filename before renaming or deleting it. Press Back to leave without changing the file.</li></ol><div class=\"callout warning\"><strong>Do not interrupt writes</strong><p>Do not remove the microSD card, disconnect USB, or power off during save, rename, delete, format, capture, or update operations.</p></div>"} />
+
+## Read the screen {#screen-language}
+
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Element</th><th>Meaning</th></tr></thead><tbody><tr><td>Highlighted row</td><td>Center opens this item.</td></tr><tr><td>Left/right arrows</td><td>The value or page can be changed.</td></tr><tr><td>Black action bar</td><td>Shows the physical button and available action.</td></tr><tr><td>Progress or counters</td><td>The function is active; use its displayed Stop or Back behavior.</td></tr><tr><td>Saved / Complete</td><td>The operation ended; verify the file or result.</td></tr><tr><td>Failed / Error</td><td>Stop and use that guide’s troubleshooting section before retrying.</td></tr></tbody></table></div>"} />
+
+## Visual guide {#visuals}
+
+<GuideHtml html={"<div class=\"visual-set\"><figure class=\"guide-figure\"><div class=\"figure-art\"><img src=\"/assets/line-art/01-front.svg\" alt=\"M1 front controls\" loading=\"lazy\"></div><figcaption><strong>M1 front controls</strong><span>The directional pad surrounds Center. Back is the separate lower-right button.</span></figcaption></figure><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"Main Menu: Sub-GHz, RFID, NFC, Infrared, USB, GPIO, Wi-Fi, Bluetooth, Settings. Sub-GHz selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/main-menu.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>Main Menu</strong><span>Four rows are visible at a time. Use Up and Down to scroll through all 9 items.</span></figcaption></figure></div>"} />
 
 
 ---

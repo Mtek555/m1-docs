@@ -1,63 +1,36 @@
 ---
 id: microsd-card
-title: microSD Card
-description: Prepare removable storage, manage files, and avoid corruption.
+title: "microSD Card"
+description: "Set up the microSD card, find your saved files, and use USB Drive correctly."
 sidebar_position: 6
 slug: /microsd-card
 ---
 
-<div className="guideMeta">Field Guide 06 · 5 min read</div>
+import GuideHtml from '@site/src/components/GuideHtml';
 
-## Card requirements {#card-requirements}
+<div className="guideMeta">Field Guide 06 · 7 min read</div>
 
-| Item | Requirement |
-| --- | --- |
-| Maximum documented capacity | 256 GB |
-| Supported file systems | FAT32 and exFAT |
-| On-device formatting | **Settings > Storage > Format SD Card** |
+<p className="guideLede">Set up the microSD card, find your saved files, and use USB Drive correctly.</p>
 
-With the M1 held horizontally, the card slot is along the lower edge. Insert the card with its metal contacts facing upward and press gently until it latches.
+## Card requirements {#requirements}
 
-## What the card stores {#stored-files}
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Item</th><th>Supported</th></tr></thead><tbody><tr><td>Capacity</td><td>Up to 256 GB</td></tr><tr><td>Filesystem</td><td>FAT32 or exFAT</td></tr><tr><td>Use</td><td>Saved radio captures, NFC/RFID records, Wi-Fi/BLE records, infrared data, and update images</td></tr></tbody></table></div>"} />
 
-| Location or extension | Purpose |
-| --- | --- |
-| `/NFC` and `.nfc` | Saved NFC cards and tags |
-| `/RFID` and `.rfid` | Saved 125 kHz RFID tags |
-| `/SUBGHZ` and `.sgh` | Saved Sub-GHz captures |
-| Infrared database folders | Universal remote code database |
-| `.bin` and `.md5` | Main or ESP32 firmware update files |
+## Folders created by the M1 {#folders}
 
-## Manage the card on the M1 {#manage-card}
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Path</th><th>Contents</th></tr></thead><tbody><tr><td><code>nfc/</code></td><td>Saved NFC card profiles</td></tr><tr><td><code>nfc/system/</code></td><td>NFC key and password dictionaries</td></tr><tr><td><code>nfc/recover/</code></td><td>NFC recovery artifacts</td></tr><tr><td><code>rfid/</code></td><td>LF RFID records</td></tr><tr><td><code>subghz/</code></td><td>Sub-GHz captures</td></tr><tr><td><code>wifi/</code></td><td>Wi-Fi records and MonstaShark <code>.pcapng</code> files</td></tr><tr><td><code>ble/</code></td><td>Saved BLE advertisement records</td></tr><tr><td><code>infrared/</code></td><td>Learned IR signals</td></tr><tr><td><code>infrared/db/</code></td><td>Universal-remote database files</td></tr></tbody></table></div><div class=\"callout note\"><strong>Folders created automatically</strong><p>The firmware checks these folders when the card mounts. Existing folders are kept. If a file already uses a required folder name, the M1 leaves it unchanged and reports the problem.</p></div>"} />
 
-| Menu item | What it does |
-| --- | --- |
-| About SD Card | Shows the label, file system, capacity, and free space. |
-| Explore SD Card | Browses folders and files. |
-| Mount SD Card | Returns the card to normal M1 application access. |
-| Unmount SD Card | Releases the card from M1 applications and prepares it for USB mass storage. |
-| Format SD Card | Erases and reformats the card. All files are lost. |
+## Browse files on the M1 {#browse}
 
-## Access the card from a computer {#computer-access}
+<GuideHtml html={"<p>From the home screen, press Left. Open a folder with Center. Supported files may offer Delete, Rename, or Run actions. Back returns to the previous folder.</p>"} />
 
-1. Open **Settings > Storage > Unmount SD Card**.
-2. Connect the M1 to the computer with a data-capable USB-C cable.
-3. Open the removable drive and copy files normally.
-4. Eject the drive from the computer before disconnecting USB.
-5. Open **Settings > Storage > Mount SD Card** before using saved libraries again.
+## USB Drive ownership {#usb-ownership}
 
-:::danger[Avoid file corruption]
-Do not remove the card, disconnect USB, or remount the card while a computer is writing files.
-:::
+<GuideHtml html={"<div class=\"callout warning\"><strong>One owner at a time</strong><p>While USB Drive is open, only the connected computer can access the microSD card. Do not remove the card or start a feature that needs it. Safely eject the drive on the computer before pressing Back or disconnecting.</p></div>"} />
 
-## Troubleshooting {#sd-troubleshooting}
+## Troubleshooting {#troubleshooting}
 
-| Problem | What to try |
-| --- | --- |
-| SD-card error icon | Reinsert the card and confirm it is FAT32 or exFAT. |
-| Saved library will not open | Mount the card and confirm the expected folder exists. |
-| Computer shows no drive | Unmount the card on the M1, reconnect USB, and try another data cable. |
-| Files appear corrupted | Eject properly, avoid removing the card during writes, and test another card. |
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Problem</th><th>What to try</th></tr></thead><tbody><tr><td>Card not detected</td><td>Reinsert the card, then reboot if needed.</td></tr><tr><td>Folder will not open</td><td>Check the filesystem on a computer and back up the card before repair.</td></tr><tr><td>Expected folder is missing</td><td>Exit USB Drive, then restart the M1 so it can create the missing folder.</td></tr><tr><td>Feature cannot save</td><td>Confirm free space, card mount state, and that the computer no longer owns the drive.</td></tr></tbody></table></div>"} />
 
 
 ---

@@ -1,71 +1,60 @@
 ---
 id: nfc
-title: NFC (13.56 MHz)
-description: Read, inspect, save, and use supported NFC cards and tags.
+title: "NFC"
+description: "Read supported 13.56 MHz cards, use saved data, create profiles, recover MIFARE keys, and manage dictionaries."
 sidebar_position: 8
 slug: /nfc
 ---
 
-<div className="guideMeta">Field Guide 08 · 6 min read</div>
+import GuideHtml from '@site/src/components/GuideHtml';
 
-:::warning
-For legal and authorized use only. Only test devices you own or have explicit permission to access.
-:::
+<div className="guideMeta">Field Guide 08 · 35 min read</div>
 
-## What NFC support means {#nfc-scope}
+<p className="guideLede">Read supported 13.56 MHz cards, use saved data, create profiles, recover MIFARE keys, and manage dictionaries.</p>
 
-:::warning[Before you start]
-A microSD card is required for saving and for the **Saved** library. Use NFC functions only on cards and systems you own or are authorized to test.
-:::
+## Before you start {#before}
 
-| Card family | Documented behavior |
-| --- | --- |
-| Ultralight / NTAG Type 2 | Full read workflow with save and supported emulation. |
-| MIFARE Classic 1K / 4K / Mini | Detection and identification information. |
-| FeliCa, ISO-15693, ISO-14443B | Detection and identity information; feature depth varies by family. |
+<GuideHtml html={"<div class=\"callout warning\"><strong>Sensitive card data</strong><p>NFC dumps, UIDs, keys, passwords, NDEF records, and transit data can be sensitive. Use only your cards or cards covered by explicit authorization.</p></div><p>Place one card flat against the NFC antenna area. Remove other contactless cards.</p>"} />
 
-## NFC menu {#nfc-menu}
+## Read {#read}
 
-| Menu item | What it does |
-| --- | --- |
-| Read | Scans a card and shows information available for its family. |
-| Saved | Opens saved `.nfc` files and their supported actions. |
-| Tools | Opens utilities available in the installed firmware and for the selected card type. |
+<GuideHtml html={"<p>Read detects an NFC card, identifies its family, and retrieves the information available for that card type.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → NFC → Read</div><ol><li>Place one card against the antenna.</li><li>Open Read and hold it still.</li><li>Keep the card still while the M1 reads its pages, blocks, sectors, or applications.</li><li>Review card family, UID, and completion state.</li><li>Press Center for the actions valid for this result.</li><li>Press Back to stop or return.</li></ol><div class=\"table-wrap\"><table><thead><tr><th>Action</th><th>When it appears and what to do</th></tr></thead><tbody><tr><td>Save</td><td>Usable result: name it and save under nfc/.</td></tr><tr><td>Save Partial</td><td>Incomplete MIFARE Classic data: save only if missing sectors are understood.</td></tr><tr><td>Emulate</td><td>Supported full data is available; present M1 to the authorized reader and press Back to stop.</td></tr><tr><td>Emulate UID</td><td>Only identity-level emulation is available.</td></tr><tr><td>Write</td><td>Compatible NTAG21x or MIFARE Classic result: align writable media and keep it still.</td></tr><tr><td>Unlock</td><td>Compatible protected Type 2 tag: follow the AUTHLIM precautions below.</td></tr><tr><td>Info</td><td>Open captured UID, NDEF, memory, sector, application, signature, or transit details.</td></tr></tbody></table></div><ul><li>A complete MIFARE Classic read covers every expected readable sector.</li><li>A partial result may contain UID and some sectors but is not a complete backup.</li><li>Type 2 and NTAG results can include pages, NDEF, signature, and protection state.</li><li>DESFire results expose card and discovered application information; protected content may remain unavailable.</li><li>Unknown cards may yield an identity without application data.</li></ul>"} />
 
-## Read a card or tag {#read-card}
+## Saved {#saved}
 
-1. Open **NFC > Read**.
-2. Place one card flat against the upper half of the rear casing.
-3. Keep the card still until the read completes.
-4. Press **Right** to open the actions available after a successful read.
+<GuideHtml html={"<p>Saved opens NFC profiles stored on the microSD card and shows the actions supported by each profile.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → NFC → Saved</div><ol><li>Select a saved NFC file.</li><li>Review its family and UID.</li><li>Press Center for its applicable actions.</li><li>Use Emulate or Emulate UID exactly as labeled.</li><li>Use Edit UID only when changing stored identity is intentional.</li><li>Use Write or Unlock only when offered.</li><li>Open Info, or choose Rename or Delete to manage the file.</li></ol><div class=\"callout note\"><strong>Capability labels</strong><p>Emulate means the saved data supports the full-emulation path. Emulate UID means identity only.</p></div>"} />
 
-## Actions and fields {#nfc-actions}
+## Add a card profile {#add}
 
-| Action | What it does |
-| --- | --- |
-| Save | Stores the result as an `.nfc` file on the microSD card. |
-| Emulate UID | Presents the stored serial number to a reader. |
-| Utils | Opens card-related utilities supported by the current firmware. |
-| Info | Shows detailed card information. |
+<GuideHtml html={"<p>Add creates a new saved NFC profile using the memory layout and UID format of the selected card family.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → NFC → Add</div><div class=\"table-wrap\"><table><thead><tr><th>Item</th><th>What it creates</th></tr></thead><tbody><tr><td>MFC 1K</td><td>A MIFARE Classic 1K profile with an entered or generated UID.</td></tr><tr><td>MFC 4K</td><td>A MIFARE Classic 4K profile with an entered or generated UID.</td></tr><tr><td>Ultralight</td><td>A MIFARE Ultralight profile with an entered or generated UID.</td></tr><tr><td>NTAG213</td><td>An NTAG213 profile with the matching memory layout.</td></tr><tr><td>NTAG215</td><td>An NTAG215 profile with the matching memory layout.</td></tr><tr><td>NTAG216</td><td>An NTAG216 profile with the matching memory layout.</td></tr></tbody></table></div><ol><li>Select the exact profile.</li><li>Choose Enter UID for a known valid UID or Generate UID for a new identity.</li><li>Check every hexadecimal byte.</li><li>Press Center on Save.</li><li>Enter a unique filename.</li><li>Open the profile from Saved and review Info.</li></ol><div class=\"callout warning\"><strong>Profile is not application data</strong><p>Creating a profile does not copy protected keys, balances, permissions, or account access.</p></div>"} />
 
-| Field | Meaning |
-| --- | --- |
-| UID | Card or tag serial number; commonly 4, 7, or 10 bytes. |
-| ATQA | Two-byte identification value used during ISO-14443A selection. |
-| SAK | Selection response that helps identify technology and capabilities. |
+## Extract Keys {#extract}
 
-:::danger[UID emulation limits]
-UID emulation only works with readers that rely on the serial number alone. It does not reproduce secure authentication, cryptographic keys, or payment credentials.
-:::
+<GuideHtml html={"<p>Extract Keys captures supported MIFARE Classic authentication exchanges for key-recovery work.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → NFC → Extract Keys</div><ol><li>Insert a writable microSD card.</li><li>Read the explanation and press Center on Start.</li><li>Hold the M1 near the reader while it captures the authentication exchange.</li><li>Wait for Authentication data captured, or press Back to stop.</li><li>Save the recovery artifact under nfc/recover/ when offered.</li><li>Use only recovered, validated keys in a later Read; a nonce capture does not guarantee a recovered key.</li></ol><div class=\"callout warning\"><strong>Protect recovery data</strong><p>Reader-authentication capture can expose access-control secrets. Obtain written authorization and handle files like passwords.</p></div>"} />
 
-## Troubleshooting {#nfc-troubleshooting}
+## Tools — MIFARE Classic Keys {#classic-keys}
 
-| Problem | What to try |
-| --- | --- |
-| Card is not detected | Remove blocking sleeves or metal and hold one card flat against the rear antenna area. |
-| Multiple cards interfere | Separate the target card from wallets, phones, and other contactless cards. |
-| Save is unavailable | Insert and mount a microSD card. |
-| Only basic information appears | The card family may be detectable but not fully supported for memory reading or emulation. |
+<GuideHtml html={"<p>MIFARE Classic Keys manages the six-byte keys used automatically when reading Classic cards.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → NFC → Tools → MIFARE Classic Keys</div><ol><li>Review System and Your keys counts. System keys are read-only.</li><li>Press Center on Add.</li><li>Enter exactly 12 hexadecimal characters for the six-byte key.</li><li>Save; duplicate built-in or user keys are reported without another copy.</li><li>Press Right on List to browse the keys you added.</li><li>Select a user key and press Center.</li><li>Confirm Delete only for the intended user key.</li></ol><p>The combined dictionaries are used automatically during MIFARE Classic Read.</p>"} />
+
+## Tools — Ultralight Keys {#ultralight-keys}
+
+<GuideHtml html={"<p>Ultralight Keys manages 16-byte keys for supported MIFARE Ultralight C workflows.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → NFC → Tools → Ultralight Keys</div><ol><li>Review system and user counts.</li><li>Select Add Key.</li><li>Enter exactly 32 hexadecimal characters for the 16-byte Ultralight C key.</li><li>Save and verify the count.</li><li>Select Your Keys to browse the keys you added.</li><li>Press Center on Delete for the intended key.</li></ol><div class=\"callout note\"><strong>Key management</strong><p>Ultralight C keys can be stored, but full 3DES authentication may not be available during Read.</p></div>"} />
+
+## Tools — NTAG/UL Passwords {#passwords}
+
+<GuideHtml html={"<p>NTAG/UL Passwords manages four-byte passwords and PACK values used with compatible protected Type 2 tags.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → NFC → Tools → NTAG/UL Passwords</div><ol><li>Review system and user-password counts.</li><li>Select Add Password.</li><li>Enter the four-byte password as eight hexadecimal characters and provide PACK when requested.</li><li>Save and verify the count.</li><li>Open Your Passwords to browse owner entries.</li><li>Select and confirm Delete only for the intended password.</li></ol><p>The same dictionary is used by the compatible Type 2 Unlock workflow.</p>"} />
+
+## Unlock a protected tag {#unlock}
+
+<GuideHtml html={"<p>Unlock authenticates to a compatible protected Type 2 tag using a known password or an available dictionary.</p><ol><li>Read the compatible protected tag first.</li><li>Choose Unlock.</li><li>Select Enter Password for one known four-byte password. An incorrect attempt may consume the tag’s authentication limit.</li><li>Dictionary appears only when AUTHLIM is 0; otherwise it is hidden.</li><li>Keep the tag still during authentication and automatic re-read.</li><li>On Unlocked, press Center on View.</li><li>Press Back during a running attempt to cancel.</li></ol><div class=\"callout warning\"><strong>AUTHLIM</strong><p>Do not guess passwords on a limited authentication counter. Use one verified password or stop.</p></div>"} />
+
+## Troubleshooting {#troubleshooting}
+
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Problem</th><th>What to do</th></tr></thead><tbody><tr><td>Card not detected</td><td>Remove other cards, reposition, and keep the target still.</td></tr><tr><td>Classic read partial</td><td>Add authorized keys and read again.</td></tr><tr><td>Dictionary error</td><td>Check matching files under nfc/system/ and the card filesystem.</td></tr><tr><td>Write unavailable</td><td>The family or captured data is not eligible for the current write path.</td></tr><tr><td>Unlock missing</td><td>The tag is unsupported, not detected as protected, or lacks required protection data.</td></tr><tr><td>Password rejected</td><td>Stop before more attempts; verify PWD and PACK from an authorized source.</td></tr></tbody></table></div>"} />
+
+## Visual guide {#visuals}
+
+<GuideHtml html={"<div class=\"visual-set\"><figure class=\"guide-figure\"><div class=\"figure-art\"><img src=\"/assets/line-art/02-rear.svg\" alt=\"NFC placement\" loading=\"lazy\"></div><figcaption><strong>NFC placement</strong><span>Hold one NFC card flat against the rear surface and remove other contactless cards.</span></figcaption></figure><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"NFC: Read, Saved, Add, Extract Keys, Tools. Read selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/nfc.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>NFC</strong><span>Four rows are visible at a time. Use Up and Down to scroll through all 5 items.</span></figcaption></figure><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"NFC — Add: MFC 1K, MFC 4K, Ultralight, NTAG213, NTAG215, NTAG216. MFC 1K selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/nfc-add.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>NFC — Add</strong><span>Four rows are visible at a time. Use Up and Down to scroll through all 6 items.</span></figcaption></figure><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"NFC — Tools: MIFARE Classic Keys, Ultralight Keys, NTAG/UL Passwords. MIFARE Classic Keys selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/nfc-tools.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>NFC — Tools</strong><span>Use Up and Down to move the highlight. Center opens the selected item.</span></figcaption></figure><figure class=\"workflow-figure\"><div class=\"workflow-title\">Key-assisted read</div><div class=\"workflow-row\"><span>Capture</span><b aria-hidden=\"true\">→</b><span>Recover key</span><b aria-hidden=\"true\">→</b><span>Add to dictionary</span><b aria-hidden=\"true\">→</b><span>Read again</span></div></figure></div>"} />
 
 
 ---

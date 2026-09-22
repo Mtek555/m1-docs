@@ -1,52 +1,44 @@
 ---
 id: bluetooth
-title: Bluetooth
-description: Scan for BLE advertisements and use the documented advertising mode.
+title: "Bluetooth"
+description: "Discover BLE devices, inspect and save advertising data, measure signal strength, and browse GATT services."
 sidebar_position: 12
 slug: /bluetooth
 ---
 
-<div className="guideMeta">Field Guide 12 · 4 min read</div>
+import GuideHtml from '@site/src/components/GuideHtml';
 
-:::warning
-For legal and authorized use only. Only test devices you own or have explicit permission to access.
-:::
+<div className="guideMeta">Field Guide 12 · 24 min read</div>
 
-## Bluetooth features {#bluetooth-scope}
+<p className="guideLede">Discover BLE devices, inspect and save advertising data, measure signal strength, and browse GATT services.</p>
 
-| Menu item | What it does |
-| --- | --- |
-| Scan | Scans for nearby BLE advertisements and shows a scrollable result list. |
-| Advertise | Starts the documented M1 BLE advertising mode until you exit. |
+## Before you start {#before}
 
-## Scan for BLE devices {#scan-ble}
+<GuideHtml html={"<div class=\"callout warning\"><strong>Before you connect</strong><p>BLE addresses, names, manufacturer data, services, and values can identify people or equipment. Connect or write only with authorization.</p></div><p>Leave Wi-Fi before opening Bluetooth.</p>"} />
 
-1. Open **Bluetooth > Scan**.
-2. Wait while the wireless processor initializes and the screen shows **Scanning BLE...**.
-3. Use **Up / Down** to move through results.
-4. Press **Back** to stop and return to the Bluetooth menu.
+## Scan Devices {#scan}
 
-A scan runs for approximately ten seconds before displaying results.
+<GuideHtml html={"<p>Scan Devices discovers nearby Bluetooth Low Energy advertisements and displays their available identity and advertising data.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Bluetooth → Scan Devices</div><ol><li>Wait while the M1 finds nearby devices.</li><li>Browse by name or address; unnamed entries are numbered for the session.</li><li>Press Center on Details.</li><li>Use Left and Right through identity, RSSI, flags, UUIDs, manufacturer data, and parsed fields.</li><li>Press Center on Save to name a live record under ble/.</li><li>Press Back to the device list, then Back to leave.</li></ol><div class=\"callout note\"><strong>Advertisement snapshot</strong><p>A saved record is not a pairing record and does not prove the device is connectable.</p></div>"} />
 
-## Advertise {#advertise}
+## Signal Meter {#meter}
 
-1. Open **Bluetooth > Advertise**.
-2. Wait for the wireless processor to initialize and start advertising.
-3. Review the advertised values shown on the screen.
-4. Press **Back** to stop advertising and reset the BLE session.
+<GuideHtml html={"<p>Signal Meter tracks the selected device’s received signal strength to help with relative proximity checks.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Bluetooth → Signal Meter</div><ol><li>Select the target.</li><li>Wait while the M1 measures the signal.</li><li>Read averaged RSSI and signal category.</li><li>Move slowly with consistent orientation.</li><li>On Signal lost, move closer or confirm advertising continues.</li><li>Press Back to stop.</li></ol><p>RSSI shows relative signal strength, not exact distance. Walls, people, orientation, interference, interval, and transmit power affect it.</p>"} />
 
-## Troubleshooting {#ble-troubleshooting}
+## GATT Explorer {#gatt}
 
-| Message or problem | What to try |
-| --- | --- |
-| ESP32 not ready! | Exit and re-enter Bluetooth, or reboot the M1. |
-| Failed. Let retry! | Wait several seconds and try again. |
-| No devices appear | Move closer, confirm the target is advertising BLE, and repeat the scan. |
-| Advertise does not start | Restart the M1 and confirm the ESP32 firmware matches the main firmware release. |
+<GuideHtml html={"<p>GATT Explorer connects to a BLE device and browses its services, characteristics, and supported actions.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Bluetooth → GATT Explorer</div><ol><li>Select a device and press Center on Connect.</li><li>Wait for connection and service discovery.</li><li>Select a service, then a characteristic.</li><li>Choose an action supported by the characteristic.</li><li>Press Back one level at a time to return or disconnect.</li></ol><div class=\"table-wrap\"><table><thead><tr><th>Action</th><th>Instructions</th></tr></thead><tbody><tr><td>Details</td><td>Review UUID, handle, properties, and descriptors.</td></tr><tr><td>Read</td><td>Request current length and hexadecimal bytes.</td></tr><tr><td>Write</td><td>Enter even-length hex up to 64 bytes and send with response.</td></tr><tr><td>Write No Rsp</td><td>Send even-length hex without application confirmation.</td></tr><tr><td>Notify</td><td>Subscribe via CCCD and watch notification values; Back stops.</td></tr><tr><td>Indicate</td><td>Subscribe to acknowledged indications when supported; Back stops.</td></tr></tbody></table></div><div class=\"callout warning\"><strong>Writes change devices</strong><p>Do not write unless the exact characteristic, value, and expected effect are documented.</p></div>"} />
 
-:::warning[Privacy and authorization]
-BLE advertisements can include identifiers. Scan and advertise responsibly; do not impersonate devices or services without authorization.
-:::
+## Saved {#saved}
+
+<GuideHtml html={"<p>Saved opens previously stored BLE advertisement snapshots without making a live connection.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Bluetooth → Saved</div><ol><li>Select a .ble file under ble/.</li><li>Press Center to open it.</li><li>Use Left and Right through stored details.</li><li>Compare with a new scan when current state matters.</li><li>Press Back to close.</li></ol><p>Opening a saved record does not connect to the device or provide live GATT controls.</p>"} />
+
+## Troubleshooting {#troubleshooting}
+
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Problem</th><th>What to do</th></tr></thead><tbody><tr><td>No devices</td><td>Wait, move closer, and confirm advertising.</td></tr><tr><td>Radio busy</td><td>Leave Wi-Fi.</td></tr><tr><td>Connect failed</td><td>Confirm connectable, nearby, and not connected elsewhere.</td></tr><tr><td>Read failed</td><td>Security or pairing may be required.</td></tr><tr><td>Not subscribable</td><td>No usable CCCD or Notify/Indicate property.</td></tr><tr><td>Write rejected</td><td>Verify properties, security, byte format, and authorization.</td></tr><tr><td>Saved empty</td><td>Check .ble files under ble/ and card mount.</td></tr></tbody></table></div>"} />
+
+## Visual guide {#visuals}
+
+<GuideHtml html={"<div class=\"visual-set\"><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"Bluetooth: Scan Devices, Signal Meter, GATT Explorer, Saved. Scan Devices selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/bluetooth.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>Bluetooth</strong><span>Use Up and Down to move the highlight. Center opens the selected item.</span></figcaption></figure><figure class=\"workflow-figure\"><div class=\"workflow-title\">Device discovery</div><div class=\"workflow-row\"><span>Scan</span><b aria-hidden=\"true\">→</b><span>Select device</span><b aria-hidden=\"true\">→</b><span>View details</span><b aria-hidden=\"true\">→</b><span>Save snapshot</span></div></figure><figure class=\"workflow-figure\"><div class=\"workflow-title\">GATT Explorer</div><div class=\"workflow-row\"><span>Device</span><b aria-hidden=\"true\">→</b><span>Service</span><b aria-hidden=\"true\">→</b><span>Characteristic</span><b aria-hidden=\"true\">→</b><span>Read, write, or subscribe</span></div></figure></div>"} />
 
 
 ---

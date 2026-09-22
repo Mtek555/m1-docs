@@ -1,40 +1,32 @@
 ---
 id: features-overview
-title: Features Overview
-description: See what each M1 function does and when a microSD card is required.
+title: "Features Overview"
+description: "Find the M1 tool for your task and learn how to use it."
 sidebar_position: 3
 slug: /features-overview
 ---
 
-<div className="guideMeta">Field Guide 03 · 5 min read</div>
+import GuideHtml from '@site/src/components/GuideHtml';
 
-## Radio and access tools {#radio-and-access-tools}
+<div className="guideMeta">Field Guide 03 · 7 min read</div>
 
-| Feature | What it does |
-| --- | --- |
-| NFC (13.56 MHz) | Detects supported cards and tags. Feature depth depends on the card family. |
-| RFID (125 kHz) | Reads, saves, emulates, and writes supported low-frequency ID formats. Writing requires a compatible rewritable tag. |
-| Sub-GHz | Records and replays supported sub-1 GHz signals and finds active frequencies. |
-| Infrared | Learns supported remote commands, replays saved signals, and uses an optional database for universal remotes. |
+<p className="guideLede">Find the M1 tool for your task and learn how to use it.</p>
 
-## Wireless and expansion {#wireless-and-expansion}
+## Feature map {#feature-map}
 
-| Feature | What it does |
-| --- | --- |
-| Wi-Fi | Uses the ESP32-C6 to scan nearby 2.4 GHz access points. |
-| Bluetooth | Provides BLE scanning and advertising. |
-| GPIO | Provides digital I/O, headers, a functional USB-UART bridge, and switchable 3.3 V or 5 V rails with a 0.5 A published limit. |
-| USB | Provides charging, CDC serial, and microSD mass-storage access. |
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Menu</th><th>What it is for</th><th>Storage</th></tr></thead><tbody><tr><td>Sub-GHz</td><td>Scan supported signals, record raw activity, replay saved captures, find frequency, and remap transmit output.</td><td><code>subghz/</code></td></tr><tr><td>RFID</td><td>Read, save, emulate, write, and manually create supported LF credentials; read FDX-B pet tags.</td><td><code>rfid/</code></td></tr><tr><td>NFC</td><td>Read and save supported cards, add card profiles, inspect or emulate saved data, and manage key dictionaries.</td><td><code>nfc/</code></td></tr><tr><td>Infrared</td><td>Use the bundled remote database, learn signals, replay saved signals, and remap transmit output.</td><td><code>infrared/</code></td></tr><tr><td>USB</td><td>Open the microSD card on a connected computer as a USB drive.</td><td>microSD root</td></tr><tr><td>GPIO</td><td>Inspect or control supported pins, power rails, and the USB-UART bridge.</td><td>None</td></tr><tr><td>Wi-Fi</td><td>Survey nearby networks and channels, capture traffic, and run focused wireless tools.</td><td><code>wifi/</code></td></tr><tr><td>Bluetooth</td><td>Scan BLE devices, inspect advertisements and GATT data, watch signal strength, and save records.</td><td><code>ble/</code></td></tr><tr><td>Settings</td><td>View storage and battery information, update firmware, update the ESP32, and check build details.</td><td>—</td></tr></tbody></table></div>"} />
 
-## Which features need a microSD card? {#storage-requirements}
+## Shared controls {#shared-controls}
 
-| Feature | Works without a card | Card required for |
-| --- | --- | --- |
-| NFC | Live detection and reading | Saving files and opening the Saved library |
-| RFID | Live reading and immediate emulation | Saving files and opening the Saved library |
-| Sub-GHz | Frequency Reader | Record and Replay |
-| Infrared | Learning and direct replay may operate | Universal remote database and saved files |
-| Wi-Fi / Bluetooth | Yes | Not required for scanning or advertising |
+<GuideHtml html={"<p>Most screens use Up and Down to move, Center to open or confirm, Left and Right to change a value or action, and Back to stop or return. Follow the action labels shown at the bottom of the display when they differ.</p>"} />
+
+## Wi-Fi and Bluetooth share a radio {#radio-sharing}
+
+<GuideHtml html={"<div class=\"callout note\"><strong>Shared Wi-Fi and Bluetooth radio</strong><p>Wi-Fi and Bluetooth use the same ESP32-C6 co-processor. If one tool reports that the radio is busy, leave the other radio menu and try again.</p></div>"} />
+
+## Operate only with permission {#authorization}
+
+<GuideHtml html={"<div class=\"callout warning\"><strong>Authorized use only</strong><p>Scanning may be lawful in more situations than transmitting, replaying, emulating, writing, deauthenticating, or capturing. Confirm ownership, permission, regional radio rules, and site policy before using an active function.</p></div>"} />
 
 
 ---

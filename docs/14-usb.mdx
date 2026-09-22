@@ -1,54 +1,36 @@
 ---
 id: usb
-title: USB
-description: Use charging, CDC serial, the USB-UART bridge, and microSD mass storage correctly.
+title: "USB"
+description: "Use USB Drive to move files between the M1 and a computer."
 sidebar_position: 14
 slug: /usb
 ---
 
-<div className="guideMeta">Field Guide 14 · 6 min read</div>
+import GuideHtml from '@site/src/components/GuideHtml';
 
-## USB functions {#usb-functions}
+<div className="guideMeta">Device guide · 8 min read</div>
 
-| Function | What it does |
-| --- | --- |
-| Charging | Powers the device and charges the internal battery from a standard 5 V source. |
-| CDC virtual serial | Presents a serial interface for supported logs, commands, and serial communication. |
-| MSC mass storage | Makes the microSD card available to a computer as a removable drive. |
+<p className="guideLede">Use USB Drive to move files between the M1 and a computer.</p>
 
-## Use microSD mass storage {#usb-storage}
+## Open USB Drive {#open}
 
-1. Open **Settings > Storage > Unmount SD Card**.
-2. Connect the M1 with a data-capable USB-C cable.
-3. Open the removable drive and copy the required files.
-4. Eject the drive safely from the computer.
-5. Disconnect USB or return to the M1, then open **Settings > Storage > Mount SD Card**.
+<GuideHtml html={"<p>USB Drive presents the M1 microSD card to a connected computer as removable storage.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → USB → USB Drive</div><ol><li>Insert a microSD card and make sure the M1 recognizes it.</li><li>Connect a data-capable USB-C cable.</li><li>Open USB Drive.</li><li>Wait for the removable drive to appear.</li><li>Copy files into the matching feature folders.</li><li>Allow each copy to finish.</li></ol><div class=\"callout warning\"><strong>While USB Drive is open</strong><p>Do not remove the card, format it, power off, or start a function that writes to it.</p></div>"} />
 
-:::danger[Avoid file corruption]
-Do not remove the microSD card, disconnect USB, or remount the card while the computer is writing files.
-:::
+## Place files correctly {#files}
 
-## CDC serial and the GPIO bridge {#cdc-and-bridge}
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Content</th><th>Folder</th></tr></thead><tbody><tr><td>Sub-GHz</td><td>subghz/</td></tr><tr><td>RFID</td><td>rfid/</td></tr><tr><td>NFC profiles</td><td>nfc/</td></tr><tr><td>NFC dictionaries</td><td>nfc/system/</td></tr><tr><td>NFC recovery</td><td>nfc/recover/</td></tr><tr><td>Infrared</td><td>infrared/</td></tr><tr><td>Universal IR database</td><td>infrared/db/</td></tr><tr><td>Wi-Fi</td><td>wifi/</td></tr><tr><td>BLE</td><td>ble/</td></tr><tr><td>Update images</td><td>Release-specified location</td></tr></tbody></table></div>"} />
 
-The M1 appears as a USB CDC virtual serial port. The functional **GPIO > USB-UART bridge** uses that USB serial connection to forward data bidirectionally to the selected UART target.
+## Disconnect safely {#disconnect}
 
-| Bridge target | Connection |
-| --- | --- |
-| UART: TX (PA9), RX (PA10), 3.3 V | External UART1 header connection |
-| UART: ESP32 | Internal ESP32 UART connection |
+<GuideHtml html={"<ol><li>Finish transfers and close open files.</li><li>Use Eject or Safely Remove on the computer.</li><li>Wait for the safe-removal message.</li><li>Press Back on M1.</li><li>Confirm the home file browser opens the card again.</li></ol>"} />
 
-:::note[Serial settings]
-The default bridge setting is **115200 baud, 8 data bits, no parity, 1 stop bit**. Supported line-coding changes selected by the computer are applied to the active UART.
-:::
+## Troubleshooting {#troubleshooting}
 
-## Troubleshooting {#usb-troubleshooting}
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Problem</th><th>What to do</th></tr></thead><tbody><tr><td>Drive does not appear</td><td>Use a data cable, another port, and verify About SD Card.</td></tr><tr><td>Card busy</td><td>Eject, leave USB Drive, then reopen the file browser.</td></tr><tr><td>Files missing</td><td>Verify exact feature folder and supported extension.</td></tr><tr><td>Computer requests format</td><td>Cancel and diagnose the filesystem before erasing.</td></tr></tbody></table></div>"} />
 
-| Problem | What to try |
-| --- | --- |
-| M1 charges but no drive appears | Use a data cable and unmount the microSD card on the M1. |
-| No serial port appears | Try another cable or port and check the operating-system device list or driver requirements. |
-| Saved libraries fail after computer access | Eject the drive, disconnect USB, and mount the card again in Settings. |
-| Files become corrupted | Avoid simultaneous M1/computer access and always eject before disconnecting. |
+## Visual guide {#visuals}
+
+<GuideHtml html={"<div class=\"visual-set\"><figure class=\"guide-figure\"><div class=\"figure-art\"><img src=\"/assets/line-art/06-bottom.svg\" alt=\"Bottom connections\" loading=\"lazy\"></div><figcaption><strong>Bottom connections</strong><span>The USB-C and microSD openings are on the bottom edge.</span></figcaption></figure><figure class=\"guide-figure\"><div class=\"figure-art\"><img src=\"/assets/line-art/10a-usbc-closeup.svg\" alt=\"USB-C port\" loading=\"lazy\"></div><figcaption><strong>USB-C port</strong><span>Use a USB-C cable that supports data for USB Drive and firmware workflows.</span></figcaption></figure><figure class=\"guide-figure\"><div class=\"figure-art\"><img src=\"/assets/line-art/10b-microsd-closeup.svg\" alt=\"microSD slot\" loading=\"lazy\"></div><figcaption><strong>microSD slot</strong><span>Insert the card in the orientation shown by the slot; do not force it.</span></figcaption></figure><figure class=\"workflow-figure\"><div class=\"workflow-title\">USB Drive ownership</div><div class=\"workflow-row\"><span>Open USB Drive</span><b aria-hidden=\"true\">→</b><span>Use on computer</span><b aria-hidden=\"true\">→</b><span>Eject</span><b aria-hidden=\"true\">→</b><span>Return to M1</span></div></figure></div>"} />
 
 
 ---
