@@ -13,7 +13,7 @@ const categories = [
 
 const featureHighlights = [
   { title: "9-item main menu", text: "USB has its own top-level category." },
-  { title: "NFC tools", text: "Add profiles, extract keys, and manage dictionaries." },
+  { title: "NFC tools", text: "Read cards, add profiles, and manage key dictionaries." },
   { title: "Wi-Fi and MonstaShark", text: "Scan networks, survey channels, run controlled tests, and save PCAPNG captures." },
   { title: "Bluetooth tools", text: "View device details, measure signal strength, explore GATT, and open saved records." },
 ];
@@ -30,7 +30,7 @@ export default function Home(): ReactNode {
               <p>Learn about the M1, explore its tools, manage files, update firmware, and keep your device working smoothly.</p>
               <div className={styles.actions}>
                 <Link className="button button--primary" to="/docs/getting-started">Start with the M1 →</Link>
-                <Link className="button button--secondary" href="https://update.monstatek.com">Update firmware ↗</Link>
+                <Link className="button button--secondary" href="https://control.monstatek.com">Open Web Manager ↗</Link>
               </div>
               <small>● Official MonstaTek M1 field guide</small>
             </div>

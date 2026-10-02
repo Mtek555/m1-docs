@@ -47,8 +47,9 @@ const config: Config = {
       logo: { alt: "MonstaTek M1", src: "img/monstatek-logo-transparent.png" },
       items: [
         { to: "/docs/getting-started", label: "Guides", position: "left" },
+        { to: "/docs/updating-firmware", label: "Update M1", position: "left" },
         { to: "/docs/hardware-specifications", label: "Specifications", position: "left" },
-        { href: "https://github.com/Monstatek/M1", label: "GitHub", position: "right" },
+        { href: "https://control.monstatek.com", label: "Web Manager", position: "right" },
       ],
     },
     footer: {
@@ -56,10 +57,11 @@ const config: Config = {
       links: [
         { title: "Product", items: [
           { label: "MonstaTek", href: "https://www.monstatek.com" },
-          { label: "Update M1", href: "https://update.monstatek.com" },
+          { label: "M1 Web Manager", href: "https://control.monstatek.com" },
         ] },
         { title: "Resources", items: [
-          { label: "GitHub", href: "https://github.com/Monstatek/M1" },
+          { label: "M1 firmware source", href: "https://github.com/Monstatek/M1" },
+          { label: "ESP32 Core source", href: "https://github.com/Monstatek/MonstaTek-Esp32-Core" },
           { label: "Firmware releases", href: "https://github.com/Monstatek/M1/releases" },
         ] },
         { title: "Support", items: [

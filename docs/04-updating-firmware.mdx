@@ -1,38 +1,37 @@
 ---
 id: updating-firmware
-title: "Updating Firmware"
-description: "Update the M1 or ESP32 firmware, then check that everything is working."
+title: "Update M1"
+description: "Update M1 Firmware, ESP32 Core, and managed content with the M1 Web Manager."
 sidebar_position: 4
 slug: /updating-firmware
 ---
 
 import GuideHtml from '@site/src/components/GuideHtml';
 
-<div className="guideMeta">Field Guide 04 · 9 min read</div>
+<div className="guideMeta">Field Guide 04 · 8 min read</div>
 
-<p className="guideLede">Update the M1 or ESP32 firmware, then check that everything is working.</p>
+<p className="guideLede">Update M1 Firmware, ESP32 Core, and managed content with the M1 Web Manager.</p>
 
-## Choose the correct image {#choose-image}
+## Current versions {#versions}
 
-<GuideHtml html={"<div class=\"callout note\"><strong>Verify the image</strong><p>Use the M1 firmware file provided by MonstaTek.</p></div><p>The M1 contains separate STM32 main firmware and ESP32-C6 wireless firmware. Each processor uses a different firmware file.</p>"} />
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Component</th><th>Current version</th><th>What it controls</th></tr></thead><tbody><tr><td>M1 Firmware</td><td><strong>0.8.1.0</strong></td><td>The main M1 interface, storage, and device functions.</td></tr><tr><td>ESP32 Core</td><td><strong>1.0</strong></td><td>Wi-Fi and Bluetooth functions.</td></tr></tbody></table></div><div class=\"callout note\"><strong>Two components, two version numbers</strong><p>M1 Firmware and ESP32 Core are updated independently. Their version numbers are not expected to match. M1 Firmware 0.8.1.0 with ESP32 Core 1.0 is the current combination.</p></div>"} />
 
-## Prepare the M1 {#prepare}
+## Update with the M1 Web Manager {#web-manager}
 
-<GuideHtml html={"<ol><li>Back up the microSD card.</li><li>Charge the battery and connect stable USB power.</li><li>Copy the approved STM32 image to the microSD card.</li><li>Safely eject the USB drive before leaving USB Drive mode.</li><li>Exit Wi-Fi and Bluetooth before starting the update.</li></ol>"} />
+<GuideHtml html={"<p>The <a href=\"https://control.monstatek.com\">M1 Web Manager</a> is the recommended way to update the M1.</p><ol><li>On a desktop computer, open a supported Chromium-based browser with Web Serial support.</li><li>Connect the M1 with a USB cable that supports data.</li><li>Open <a href=\"https://control.monstatek.com\">control.monstatek.com</a>.</li><li>Select Connect and choose the M1 serial connection.</li><li>Check M1 Firmware and ESP32 Core separately.</li><li>Select Update for each component that has an update available.</li><li>Keep the M1 connected until the update finishes and the device reconnects.</li><li>Confirm M1 Firmware 0.8.1.0 and ESP32 Core 1.0.</li><li>Use the database or content update in Web Manager when supported content is available.</li></ol><div class=\"callout note\"><strong>If you see Reinstall</strong><p>That component is already on the current version. Reinstall is available for troubleshooting; a normal update is not required.</p></div>"} />
 
-## Update the STM32 firmware {#stm32-update}
+## Update managed databases and content {#content}
 
-<GuideHtml html={"<ol><li>Open Settings > Firmware update > Image File.</li><li>Select the approved STM32 image.</li><li>Return to Firmware update and confirm that the image is ready.</li><li>Choose Firmware update.</li><li>Do not remove power or the microSD card while the image is checked and written.</li><li>Allow the M1 to reboot, then open Settings > About and verify the build label.</li></ol><div class=\"callout note\"><strong>Dual-bank update</strong><p>The STM32 updater uses the M1 bootloader and two flash banks. If the update fails, follow the recovery guide for the next steps.</p></div>"} />
+<GuideHtml html={"<p>Web Manager can maintain supported system databases and content, including the infrared database. These managed files are separate from captures, credentials, and other files you create.</p><ul><li>A content update does not replace your saved captures or credentials.</li><li>Keep the M1 connected while files are transferred.</li><li>Do not open USB Drive during a Web Manager transfer.</li></ul>"} />
 
-## Update the ESP32-C6 {#esp32-update}
+## One-time update for older firmware {#bootstrap}
 
-<GuideHtml html={"<ol><li>Use the exact ESP32 image and matching MD5 sidecar supplied by MonstaTek.</li><li>Open Settings > ESP32 update > Image File and select the image.</li><li>Use the start address listed with the ESP32 firmware.</li><li>Choose Firmware Update and keep power connected until completion.</li><li>Restart the M1 and test both Wi-Fi and Bluetooth.</li></ol><div class=\"callout warning\"><strong>Separate compatibility</strong><p>An ESP32 update can leave Wi-Fi and Bluetooth unavailable even when the main M1 firmware still boots. Use the M1 and ESP32 firmware files provided together.</p></div>"} />
+<GuideHtml html={"<p>Firmware released before M1 Web Manager support does not contain the device-side update protocol required by Web Manager. Those devices need one SD-card update before Web Manager can manage later releases.</p><ol><li>Download the M1 firmware image published for the one-time bootstrap update.</li><li>Copy it to the microSD card using USB Drive or a card reader.</li><li>Safely eject the card or USB drive.</li><li>On the M1, open Settings → Firmware update → Image File and select the image.</li><li>Return to Firmware update and start the update.</li><li>Keep the M1 powered and leave the card inserted until it restarts.</li><li>After the M1 boots, reconnect it at <a href=\"https://control.monstatek.com\">control.monstatek.com</a> and use Web Manager for M1 Firmware, ESP32 Core, and managed content.</li></ol>"} />
 
-## If the update is refused {#update-errors}
+## Troubleshooting {#troubleshooting}
 
-<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Message or symptom</th><th>Check</th></tr></thead><tbody><tr><td>File access / type error</td><td>Confirm the card is mounted and the selected file is the correct image type.</td></tr><tr><td>Image size invalid</td><td>Download the firmware file again. Do not substitute or rename a different file.</td></tr><tr><td>CRC or MD5 mismatch</td><td>Stop. Re-copy or re-download the release files and compare checksums.</td></tr><tr><td>Low battery</td><td>Charge the M1 before retrying.</td></tr><tr><td>No reboot</td><td>Try the forced reboot, then use recovery only if normal update cannot complete.</td></tr></tbody></table></div>"} />
-
+<GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Problem</th><th>What to do</th></tr></thead><tbody><tr><td>The browser cannot connect</td><td>Use a supported desktop Chromium browser, close other serial tools, reconnect the data cable, and try Connect again.</td></tr><tr><td>The M1 disconnects during update</td><td>Leave it connected. The device may restart and reconnect as part of the update.</td></tr><tr><td>Web Manager shows no supported update path</td><td>Your M1 may need the one-time SD-card bootstrap described above.</td></tr><tr><td>Wi-Fi or Bluetooth is unavailable afterward</td><td>Reconnect to Web Manager and confirm ESP32 Core 1.0 separately from M1 Firmware.</td></tr><tr><td>Update does not complete</td><td>Retry with a direct USB port and a known data cable. Use the recovery guide if the M1 no longer starts normally.</td></tr></tbody></table></div>"} />
 
 ---
 
-Need help? Email [support@monstatek.com](mailto:support@monstatek.com) and include the firmware version and screen name.
+Need help? Email [support@monstatek.com](mailto:support@monstatek.com) and include both version numbers and the message shown by Web Manager.
