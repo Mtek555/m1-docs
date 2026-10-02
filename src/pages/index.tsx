@@ -18,6 +18,11 @@ const featureHighlights = [
   { title: "Bluetooth tools", text: "View device details, measure signal strength, explore GATT, and open saved records." },
 ];
 
+const currentSoftware = [
+  { name: "M1 Firmware", version: "0.8.1.0", detail: "Menus, storage, and device functions" },
+  { name: "ESP32 Core", version: "1.0", detail: "Wi-Fi and Bluetooth functions" },
+];
+
 export default function Home(): ReactNode {
   return (
     <Layout title="MonstaTek M1 Field Guide" description="Official MonstaTek M1 user documentation">
@@ -34,6 +39,28 @@ export default function Home(): ReactNode {
               </div>
               <small>● Official MonstaTek M1 field guide</small>
             </div>
+          </div>
+        </section>
+        <section className={styles.software} aria-labelledby="current-software">
+          <div className={styles.softwareIntro}>
+            <p className={styles.eyebrow}>CURRENT SOFTWARE</p>
+            <Heading as="h2" id="current-software">Keep both M1 components current.</Heading>
+            <p>M1 Firmware and ESP32 Core are updated independently, so their version numbers do not need to match.</p>
+          </div>
+          <div className={styles.versionList}>
+            {currentSoftware.map((item) => (
+              <div className={styles.versionItem} key={item.name}>
+                <span>{item.name}</span>
+                <strong>{item.version}</strong>
+                <small>{item.detail}</small>
+              </div>
+            ))}
+          </div>
+          <div className={styles.updateAction}>
+            <Heading as="h3">Update your M1</Heading>
+            <p>Connect the M1 by USB and check both components with the M1 Web Manager.</p>
+            <Link className="button button--primary" href="https://control.monstatek.com">Open M1 Web Manager ↗</Link>
+            <Link className={styles.updateGuide} to="/docs/updating-firmware">Read the update guide →</Link>
           </div>
         </section>
         <section className={styles.categories}>

@@ -1,7 +1,7 @@
 ---
 id: infrared
 title: "Infrared"
-description: "Send universal commands, learn buttons from your original remote, replay a saved signal, or choose an external transmitter."
+description: "Send universal commands, learn buttons from your original remote, replay the latest learned signal, or choose an external transmitter."
 sidebar_position: 10
 slug: /infrared
 ---
@@ -10,7 +10,7 @@ import GuideHtml from '@site/src/components/GuideHtml';
 
 <div className="guideMeta">Field Guide 10 · 18 min read</div>
 
-<p className="guideLede">Send universal commands, learn buttons from your original remote, replay a saved signal, or choose an external transmitter.</p>
+<p className="guideLede">Send universal commands, learn buttons from your original remote, replay the latest learned signal, or choose an external transmitter.</p>
 
 ## Before you start {#before}
 
@@ -22,11 +22,11 @@ import GuideHtml from '@site/src/components/GuideHtml';
 
 ## Learn {#learn}
 
-<GuideHtml html={"<p>Learn receives one command from an original infrared remote and displays the decoded values.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Infrared → Learn</div><ol><li>Aim the original remote at the M1 receiver from a short distance.</li><li>Press one remote button briefly.</li><li>Keep alignment until protocol, address, and command appear.</li><li>If nothing appears, move closer and try a fresh battery.</li><li>Press Back to cancel or to exit after the M1 captures the signal.</li></ol>"} />
+<GuideHtml html={"<p>Learn receives one command from an original infrared remote and displays the decoded values.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Infrared → Learn</div><ol><li>Aim the original remote at the M1 receiver from a short distance.</li><li>Press one remote button briefly.</li><li>Keep alignment until protocol, address, and command appear.</li><li>If nothing appears, move closer and try a fresh battery.</li><li>Press Back after the M1 captures the signal.</li><li>Open Replay without leaving the Infrared menu to transmit that learned command.</li></ol><div class=\"callout note\"><strong>Current session</strong><p>The learned command remains available for Replay during the current Infrared session. The current public firmware does not save learned commands to a microSD library.</p></div>"} />
 
 ## Replay {#replay}
 
-<GuideHtml html={"<p>Replay transmits a learned or saved infrared command to the selected device.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Infrared → Replay</div><ol><li>After learning a command, open Replay or choose an infrared file you’ve already saved.</li><li>Review protocol, address, and command.</li><li>Point the M1 at the device you want to operate.</li><li>Press Center to transmit.</li><li>Wait for the signal to finish sending, then check whether the device responds.</li><li>Press Back to stop or return.</li></ol><div class=\"callout note\"><strong>Clear names</strong><p>Use action names such as TV_Power or Projector_Mute when organizing commands.</p></div>"} />
+<GuideHtml html={"<p>Replay transmits the command most recently captured with Learn.</p><div class=\"menu-path\"><strong>Menu path</strong>Main Menu → Infrared → Replay</div><ol><li>Use Learn to capture a command.</li><li>Return to the Infrared menu and open Replay.</li><li>Review the displayed protocol, address, and command.</li><li>Point the M1 at the device you want to operate.</li><li>Replay sends once when it opens. Press Center to send the same command again.</li><li>Press Back to stop or return.</li></ol><p>If no command has been learned during the current Infrared session, Replay returns without transmitting.</p>"} />
 
 ## Remap Tx pin {#remap}
 
@@ -38,7 +38,7 @@ import GuideHtml from '@site/src/components/GuideHtml';
 
 ## Visual guide {#visuals}
 
-<GuideHtml html={"<div class=\"visual-set\"><figure class=\"guide-figure\"><div class=\"figure-art\"><img src=\"/assets/line-art/03-left-side.svg\" alt=\"Infrared end\" loading=\"lazy\"></div><figcaption><strong>Infrared end</strong><span>Point the infrared end of the M1 toward the appliance and keep a clear line of sight.</span></figcaption></figure><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"Infrared: Universal Remotes, Learn, Replay, Remap Tx pin. Universal Remotes selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/infrared.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>Infrared</strong><span>Use Up and Down to move the highlight. Center opens the selected item.</span></figcaption></figure><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"Universal Remotes: TV remotes, Audio player remotes, Projector remotes, AC remotes. TV remotes selected.\"><img src=\"/assets/manual/m1-front.svg\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/universal-remotes.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>Universal Remotes</strong><span>Use Up and Down to move the highlight. Center opens the selected item.</span></figcaption></figure><figure class=\"workflow-figure\"><div class=\"workflow-title\">Learn and replay</div><div class=\"workflow-row\"><span>Aim original remote</span><b aria-hidden=\"true\">→</b><span>Learn</span><b aria-hidden=\"true\">→</b><span>Save</span><b aria-hidden=\"true\">→</b><span>Aim M1</span><b aria-hidden=\"true\">→</b><span>Replay</span></div></figure></div>"} />
+<GuideHtml html={"<div class=\"visual-set\"><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"Infrared: Universal Remotes, Learn, Replay, Remap Tx pin. Universal Remotes selected.\"><img src=\"/assets/manual/m1-device-boot.png\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/infrared.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>Infrared</strong><span>Use Up and Down to move the highlight. Center opens the selected item.</span></figcaption></figure><figure class=\"menu-figure firmware-menu-figure\"><div class=\"firmware-device\" role=\"img\" aria-label=\"Universal Remotes: TV remotes, Audio player remotes, Projector remotes, AC remotes. TV remotes selected.\"><img src=\"/assets/manual/m1-device-boot.png\" alt=\"\"><div class=\"device-framebuffer\"><img src=\"/assets/screens/universal-remotes.svg\" alt=\"\" width=\"128\" height=\"64\"></div></div><figcaption><strong>Universal Remotes</strong><span>Use Up and Down to move the highlight. Center opens the selected item.</span></figcaption></figure><figure class=\"workflow-figure\"><div class=\"workflow-title\">Learn and replay</div><div class=\"workflow-row\"><span>Aim original remote</span><b aria-hidden=\"true\">→</b><span>Learn</span><b aria-hidden=\"true\">→</b><span>Review</span><b aria-hidden=\"true\">→</b><span>Aim M1</span><b aria-hidden=\"true\">→</b><span>Replay</span></div></figure></div>"} />
 
 
 ---
