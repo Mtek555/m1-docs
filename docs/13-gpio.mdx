@@ -10,6 +10,8 @@ slug: /gpio
 
 ## Electrical safety first {#electrical-safety}
 
+GPIO is for connecting external electronics to the M1. If you are not familiar with voltage levels, pinouts, and current limits, read this section carefully before connecting hardware.
+
 :::danger[5 V tolerance has limits]
 External-header signals are **5 V-tolerant only in digital I/O mode and only while the M1 is powered**. Do not drive a pin when the M1 is off. Analog-capable `PA9`, `PA10`, `PC1`, `PC2`, and `PC3` are limited to **VDDA + 0.3 V (about 3.6 V maximum)** when used in analog mode.
 :::
