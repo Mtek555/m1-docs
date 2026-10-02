@@ -16,11 +16,11 @@ import GuideHtml from '@site/src/components/GuideHtml';
 
 <GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Component</th><th>Repository</th></tr></thead><tbody><tr><td>M1 Firmware</td><td><a href=\"https://github.com/Monstatek/M1\">github.com/Monstatek/M1</a></td></tr><tr><td>ESP32 Core</td><td><a href=\"https://github.com/Monstatek/MonstaTek-Esp32-Core\">github.com/Monstatek/MonstaTek-Esp32-Core</a></td></tr></tbody></table></div><p>Clone only the public repository for the component you want to build. Read its license and repository instructions before compiling or flashing.</p>"} />
 
-## Build M1 Firmware {#m1}
+## Building M1 Firmware {#m1}
 
 <GuideHtml html={"<p>The M1 Firmware repository includes STM32CubeIDE, command-line, and VS Code material.</p><ol><li>Open the public <a href=\"https://github.com/Monstatek/M1\">M1 repository</a>.</li><li>Start with its README and <code>documentation/mbt.md</code>.</li><li>For a command-line build, install the listed ARM toolchain, CMake, Ninja, and SRecord requirements, then use the repository build script.</li><li>On macOS, use the public <code>setup_macos.sh</code> support where appropriate.</li><li>For VS Code or STM32CubeIDE, follow the public editor-specific instructions and select the current project target.</li></ol>"} />
 
-## Build ESP32 Core {#core}
+## Building ESP32 Core {#core}
 
 <GuideHtml html={"<p>Use the README and release documentation in the public <a href=\"https://github.com/Monstatek/MonstaTek-Esp32-Core\">ESP32 Core repository</a>. Its build and flash process is separate from the STM32 firmware process.</p><div class=\"callout note\"><strong>Separate components</strong><p>A successful build of one component does not build or update the other. The current user-facing versions are M1 Firmware 0.8.1.0 and ESP32 Core 1.0.</p></div>"} />
 

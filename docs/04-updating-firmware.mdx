@@ -16,11 +16,11 @@ import GuideHtml from '@site/src/components/GuideHtml';
 
 <GuideHtml html={"<div class=\"table-wrap\"><table><thead><tr><th>Component</th><th>Current version</th><th>What it controls</th></tr></thead><tbody><tr><td>M1 Firmware</td><td><strong>0.8.1.0</strong></td><td>The main M1 interface, storage, and device functions.</td></tr><tr><td>ESP32 Core</td><td><strong>1.0</strong></td><td>Wi-Fi and Bluetooth functions.</td></tr></tbody></table></div><div class=\"callout note\"><strong>Two components, two version numbers</strong><p>M1 Firmware and ESP32 Core are updated independently. Their version numbers are not expected to match. M1 Firmware 0.8.1.0 with ESP32 Core 1.0 is the current combination.</p></div>"} />
 
-## Update with the M1 Web Manager {#web-manager}
+## Updating with the M1 Web Manager {#web-manager}
 
 <GuideHtml html={"<p>The <a href=\"https://control.monstatek.com\">M1 Web Manager</a> is the recommended way to update the M1.</p><ol><li>On a desktop computer, open a supported Chromium-based browser with Web Serial support.</li><li>Connect the M1 with a USB cable that supports data.</li><li>Open <a href=\"https://control.monstatek.com\">control.monstatek.com</a>.</li><li>Select Connect and choose the M1 serial connection.</li><li>Check M1 Firmware and ESP32 Core separately.</li><li>Select Update for each component that has an update available.</li><li>Keep the M1 connected until the update finishes and the device reconnects.</li><li>Confirm M1 Firmware 0.8.1.0 and ESP32 Core 1.0.</li><li>Use the database or content update in Web Manager when supported content is available.</li></ol><div class=\"callout note\"><strong>If you see Reinstall</strong><p>That component is already on the current version. Reinstall is available for troubleshooting; a normal update is not required.</p></div>"} />
 
-## Update managed databases and content {#content}
+## Updating managed databases and content {#content}
 
 <GuideHtml html={"<p>Web Manager can maintain supported system databases and content, including the infrared database. These managed files are separate from captures, credentials, and other files you create.</p><ul><li>A content update does not replace your saved captures or credentials.</li><li>Keep the M1 connected while files are transferred.</li><li>Do not open USB Drive during a Web Manager transfer.</li></ul>"} />
 

@@ -12,7 +12,7 @@ slug: /recover-unresponsive-m1
 SWD recovery erases and replaces the main STM32 firmware. Use it only when the M1 cannot complete a normal firmware update. Incorrect wiring or programming the wrong file can leave the device unusable.
 :::
 
-## Try a forced reboot first {#forced-reboot}
+## Starting with a forced reboot {#forced-reboot}
 
 Hold **Back + Right** for about five seconds. If the M1 starts, use the normal [firmware update procedure](./updating-firmware) instead of SWD recovery.
 
@@ -30,7 +30,7 @@ If it remains unresponsive, continue below or contact [support@monstatek.com](ma
 Do not select an ESP32-C6 image, factory archive, `.md5` file, or third-party firmware. The recovery image is the M1 STM32 `*_wCRC.bin` file.
 :::
 
-## Find the recovery pins {#recovery-pins}
+## Finding the recovery pins {#recovery-pins}
 
 The pin labels run along the M1's long connector edge. Use the **10-pin group labeled 9 through 18**. The illustration follows the numbering printed on the enclosure.
 
@@ -56,7 +56,7 @@ The same pins may be described in board documentation as **J7 pins 1, 2, 3, and 
 Do not connect the programmer to enclosure pin **1 (+5 V)**. Power the M1 from its own USB-C connection during recovery.
 :::
 
-## Connect the programmer {#connect-programmer}
+## Connecting the programmer {#connect-programmer}
 
 1. Disconnect the ST-Link from the computer and disconnect USB power from the M1.
 2. Connect **SWCLK** to M1 pin **10**.
@@ -69,7 +69,7 @@ Do not connect the programmer to enclosure pin **1 (+5 V)**. Power the M1 from i
 
 If you are using the ST-Link section of a Nucleo board, disconnect it from the Nucleo target MCU as described in that board's manual before wiring it to the M1.
 
-## Reflash the STM32 {#reflash-stm32}
+## Reflashing the STM32 {#reflash-stm32}
 
 1. Open **STM32CubeProgrammer** and select **ST-LINK**.
 2. Select the detected probe and choose **SWD** as the port.
